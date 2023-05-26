@@ -103,6 +103,7 @@ extension EntireEventCollectionViewCell {
     func binding(datum: Datum) {
         eventTitleLabel.text = datum.name
         urlToImage(urlString: datum.bannerImage) { image in
+            
             if let image = image {
                 self.eventImageView.image = image
             } else {

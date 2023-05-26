@@ -9,22 +9,33 @@ import UIKit
 import LabCodeSDK
 import SnapKit
 
-class ScanViewController: DetectViewController, DetectViewControllerProtocol {
+class ScanViewController: DetectViewController {
     
-    func abnormalExecution(reason: String) {
-        
+    private var viewModel: ScanViewModel
+    private var scanResponse: ScanResponse?
+    
+    //MARK: - UI Component
+    private lazy var scanTipView = ScanTipView()
+    
+    
+    //MARK: - Initialize
+    init(viewModel: ScanViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
-    func getDetectResult(data: Dictionary<String, Any>) {
-        
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: = View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        viewModel.getCheckingTicket()
         self.activateLabTracking(uniqueValue: "스냅태그")
         print("ScanViewController ViewDidLoad")
+        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +50,24 @@ class ScanViewController: DetectViewController, DetectViewControllerProtocol {
 extension ScanViewController {
     //MARK: - Configure
     func configure() {
+        self.view.addSubview(scanTipView)
+        scanTipView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-36)
+            //FIXME: - 동적으로 높이 넓이 변경
+            make.width.equalTo(260)
+            make.height.equalTo(150)
+        }
+        
+    }
+}
+
+extension ScanViewController: DetectViewControllerProtocol {
+    func abnormalExecution(reason: String) {
+        
+    }
+    
+    func getDetectResult(data: Dictionary<String, Any>) {
         
     }
 }

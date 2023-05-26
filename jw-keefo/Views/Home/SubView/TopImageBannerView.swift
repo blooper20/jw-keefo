@@ -14,18 +14,6 @@ class TopImageBannerView: UIView {
     private let buttonWidth = 225
     private let buttonHeight = 48
     private let buttonBottomOffset = 12
-    private let buttonTitle = "바로가기"
-    private let buttonTitleSize = 16.0
-    private let buttonTitleLabelOffset = 22
-    private let buttonTitleLabelInset = 14
-    private let buttonTitleHeight = 20
-    private let buttonTitleWidth = 157
-    
-    private let buttonImageViewOffset = 24.81
-    private let buttonImageViewInset = 17.05
-    private let buttonImageViewWidth = 14.38
-    private let buttonImageViewHeight = 13.91
-    private let buttonRadius = 12.0
     
     private let keefoLabelFirstText = "키포에서만 가능한"
     private let keefoLabelSecondText = "나만의"
@@ -52,7 +40,7 @@ class TopImageBannerView: UIView {
         let label = UILabel()
         label.text = keefoLabelFirstText
         label.numberOfLines = 1
-        label.textColor = .gray
+        label.textColor = UIColor(hexCode: "#5B6780")
         label.font = .systemFont(ofSize: keefoFirstLineFontSize, weight: .semibold)
         label.sizeToFit()
         return label
@@ -100,22 +88,10 @@ class TopImageBannerView: UIView {
         return view
     }()
     
-    private lazy var shortcutButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .black
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = buttonRadius
+    private lazy var shortcutButton: ShortcutButtonView = {
+        let view = ShortcutButtonView()
         
-        button.setTitle(buttonTitle, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: buttonTitleSize, weight: .semibold)
-        button.titleLabel?.textColor = .white
-        button.titleLabel?.numberOfLines = 1
-        button.titleLabel?.sizeToFit()
-        
-        button.setImage(UIImage(systemName: "arrow.right"), for: .normal)
-        button.imageView?.tintColor = .white
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
+        return view
     }()
     
     //MARK: - Initialize
@@ -172,23 +148,12 @@ extension TopImageBannerView {
             make.left.equalTo(keefoThirdLabel.snp.right).offset(keefoSecondLineSpaceOffset)
         }
         
-        
-        
         self.addSubview(shortcutButton)
         shortcutButton.snp.makeConstraints { make in
             make.bottom.equalTo(bannerImageView.snp.bottom).offset(-buttonBottomOffset)
             make.centerX.equalTo(self.snp.centerX)
-            make.width.equalTo(buttonWidth)
+            make.width.equalTo(buttonWidth) // 여기
             make.height.equalTo(buttonHeight)
-        }
-        
-        shortcutButton.titleLabel?.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(buttonTitleLabelOffset)
-            make.height.equalTo(buttonTitleHeight)
-        }
-        
-        shortcutButton.imageView?.snp.makeConstraints { make in
-            make.right.equalTo(shortcutButton.snp.right).offset(buttonImageViewOffset)
         }
     }
 }

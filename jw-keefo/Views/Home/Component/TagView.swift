@@ -30,11 +30,6 @@ class TagView: UIView {
     }()
     
 //MARK: - Initialize
-//    convenience init(tagContent: String) {
-//        self.init()
-//        self.tagContent = tagContent
-//        configure()
-//    }
     convenience init(tagContent: String) {
         self.init()
         self.tagContent = tagContent
@@ -55,7 +50,7 @@ class TagView: UIView {
 extension TagView {
     //MARK: - Constraints
     func configure() {
-        self.backgroundColor = .systemGray5
+        self.backgroundColor = UIColor(hexCode: "#eaeaea")
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 8
         

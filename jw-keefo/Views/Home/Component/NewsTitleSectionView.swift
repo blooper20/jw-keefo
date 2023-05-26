@@ -34,7 +34,7 @@ class NewsTitleSectionView: UIView {
         let button = UIButton()
         button.setTitle(viewAllButtonTitle, for: .normal)
         button.setUnderline()
-        button.titleLabel?.textColor = .gray
+        button.titleLabel?.textColor = UIColor(hexCode: "#d0cfcf")
         button.titleLabel?.font = .systemFont(ofSize: viewAllButtonTitleSize, weight: .semibold)
         button.titleLabel?.sizeToFit()
         

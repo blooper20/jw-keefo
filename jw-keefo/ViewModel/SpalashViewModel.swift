@@ -44,7 +44,7 @@ extension SplashViewModel {
     }
     
     func getNewsData() async throws -> [Datum] {
-        newsResponse = try await network.getNewsData()
+        newsResponse = await network.getNewsData()
         guard let newsResponse = newsResponse else { return [] }
         if newsResponse.statusCode == 200 {
             print("<Data> Load Success")
@@ -54,11 +54,4 @@ extension SplashViewModel {
             return []
         }
     }
-    
-    /// RootViewController를 CustomTabBarController로 변경하는 함수
-//    func goCustomTabBarController() -> UIViewController{
-//        let homeViewModel = HomeViewModel()
-//        let rootViewController = HomeViewController(viewModel: homeViewModel)
-//        return rootViewController
-//    }
 }

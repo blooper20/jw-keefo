@@ -52,7 +52,7 @@ extension CustomTabBarController {
     private func configure() {
         tabBar.tintColor = .black
         tabBar.backgroundColor = .white
-        tabBar.unselectedItemTintColor = .systemGray5
+        tabBar.unselectedItemTintColor = UIColor(hexCode: "#9d9d9d")
         
         tabBar.frame.size.height = tabBarHeight
         tabBar.frame.origin.y = self.view.frame.size.height - tabBarHeight
@@ -125,24 +125,13 @@ extension CustomTabBarController {
             } else {
                 self.presentScanViewController()
             }
-//        let scanViewController = ScanViewController()
-//        self.present(scanViewController, animated: true, completion: nil)
-//
-//        guard let rootViewController = self.view.window?.rootViewController else { return }
-//        rootViewController.present(scanViewController, animated: true)
-//        scanViewController.modalTransitionStyle = .flipHorizontal
-//        scanViewController.modalPresentationStyle = .fullScreen
-//
-////        self.navigationController?.pushViewController(scanViewController, animated: true) : - 왜 안되나요?
-//
-//        print("TAP!!!")
     }
     
     private func presentScanViewController() {
-        let scanViewController = ScanViewController()
+        let scanViewModel = ScanViewModel()
+        let scanViewController = ScanViewController(viewModel: scanViewModel)
         scanViewController.modalPresentationStyle = .fullScreen
         self.present(scanViewController, animated: true, completion: nil)
-        print("TAP!!!")
     }
 }
 

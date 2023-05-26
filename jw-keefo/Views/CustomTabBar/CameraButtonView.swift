@@ -15,15 +15,17 @@ class CameraButtonView: UIView {
     //MARK: - Default Value
     private let buttonCornerRadius = 12.0
     private let buttonBorderWidth = 2.0
+    private let buttonBackgroundColor = UIColor(hexCode: "#D3D3FB")
+    private let buttonBorderColor = UIColor(hexCode: "#a7a7f7")
     
     //MARK: - UI Component
     lazy var button: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemPurple
+        button.backgroundColor = buttonBackgroundColor
         button.layer.cornerRadius = buttonCornerRadius
         button.layer.masksToBounds = true
         
-        button.layer.borderColor = UIColor.purple.cgColor
+        button.layer.borderColor = buttonBorderColor.cgColor
         button.layer.borderWidth = buttonBorderWidth
         
         return button

@@ -18,6 +18,9 @@
 		2F7FD4262A1C7FB400F98817 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4252A1C7FB400F98817 /* Network.swift */; };
 		2F7FD4282A1C96E700F98817 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4272A1C96E700F98817 /* UserResponse.swift */; };
 		2F7FD42A2A1C970700F98817 /* ScanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4292A1C970700F98817 /* ScanResponse.swift */; };
+		2F8812702A20487300EB5E3B /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88126F2A20487300EB5E3B /* ScanViewModel.swift */; };
+		2F8812722A205FBE00EB5E3B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8812712A205FBE00EB5E3B /* UIColor+.swift */; };
+		2F8812742A206E0E00EB5E3B /* ShortcutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8812732A206E0E00EB5E3B /* ShortcutButtonView.swift */; };
 		2FBF248B2A14B4FF0080CFAD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF248A2A14B4FF0080CFAD /* HomeViewController.swift */; };
 		2FBF248D2A14B5100080CFAD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF248C2A14B5100080CFAD /* ScanViewController.swift */; };
 		2FBF248F2A14B5310080CFAD /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF248E2A14B5310080CFAD /* CustomTabBarController.swift */; };
@@ -81,6 +84,9 @@
 		2F7FD4252A1C7FB400F98817 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2F7FD4272A1C96E700F98817 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		2F7FD4292A1C970700F98817 /* ScanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResponse.swift; sourceTree = "<group>"; };
+		2F88126F2A20487300EB5E3B /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
+		2F8812712A205FBE00EB5E3B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		2F8812732A206E0E00EB5E3B /* ShortcutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutButtonView.swift; sourceTree = "<group>"; };
 		2FBF248A2A14B4FF0080CFAD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FBF248C2A14B5100080CFAD /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		2FBF248E2A14B5310080CFAD /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				2F1917362A1B399200D5B777 /* UIButton+.swift */,
+				2F8812712A205FBE00EB5E3B /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -187,6 +194,7 @@
 			children = (
 				2F7FD4032A1C4E2C00F98817 /* HomeViewModel.swift */,
 				2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */,
+				2F88126F2A20487300EB5E3B /* ScanViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 				2FBF24B52A14CF180080CFAD /* EntireEventCollectionViewCell.swift */,
 				2FBF24B72A14CF720080CFAD /* TagView.swift */,
 				2F1917312A1B204900D5B777 /* NewsTitleSectionView.swift */,
+				2F8812732A206E0E00EB5E3B /* ShortcutButtonView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -541,8 +550,11 @@
 				2FBF24AD2A14C7510080CFAD /* SuccesScanPopupView.swift in Sources */,
 				2FC50F992A14AD78007AC7A5 /* AppDelegate.swift in Sources */,
 				2FBF248F2A14B5310080CFAD /* CustomTabBarController.swift in Sources */,
+				2F8812742A206E0E00EB5E3B /* ShortcutButtonView.swift in Sources */,
 				2FBF248D2A14B5100080CFAD /* ScanViewController.swift in Sources */,
+				2F8812702A20487300EB5E3B /* ScanViewModel.swift in Sources */,
 				2FBF24A62A14C5250080CFAD /* ScanView.swift in Sources */,
+				2F8812722A205FBE00EB5E3B /* UIColor+.swift in Sources */,
 				2FBF24AF2A14C7730080CFAD /* ScanTipView.swift in Sources */,
 				2FC50F9B2A14AD78007AC7A5 /* SceneDelegate.swift in Sources */,
 				2F1917322A1B204900D5B777 /* NewsTitleSectionView.swift in Sources */,
@@ -735,9 +747,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jw-keefo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -767,9 +782,12 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jw-keefo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -32,22 +32,14 @@ class Network {
         }
     }
     
-    //    func getScanData() {
-    //        if let url = URL(string: url + "3") {
-    //            let request = URLRequest.init(url: url)
-    //
-    //            URLSession.shared.dataTask(with: request) {
-    //                (data, response, error) in guard let data = data else {return}
-    //                let decoder = JSONDecoder()
-    //                print(response as Any)
-    //                do{ let json = try decoder.decode(ScanResponse.self , from: data)
-    //                    print(json,"!!!")
-    //                }
-    //                catch{
-    //                    print(error)
-    //                }
-    //            }.resume()
-    //        }
-    //    }
-    
+    func getScanData() async -> ScanResponse? {
+        guard let url = URL(string: url + "3") else { return nil }
+        let request = URLRequest.init(url: url)
+        do {
+            let result:(data: Data, response: URLResponse) = try await URLSession.shared.data(for: request)
+            return try JSONDecoder().decode(ScanResponse.self, from: result.data)
+        } catch {
+            return nil
+        }
+    }
 }
