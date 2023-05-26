@@ -1,0 +1,6 @@
+framework module Pods_jw_keefo {
+  umbrella header "Pods-jw-keefo-umbrella.h"
+
+  export *
+  module * { export * }
+}
