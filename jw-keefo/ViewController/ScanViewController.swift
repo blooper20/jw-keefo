@@ -7,6 +7,7 @@
 
 import UIKit
 import LabCodeSDK
+import SnapKit
 
 class ScanViewController: DetectViewController, DetectViewControllerProtocol {
     
@@ -17,7 +18,6 @@ class ScanViewController: DetectViewController, DetectViewControllerProtocol {
     func getDetectResult(data: Dictionary<String, Any>) {
         
     }
-    
     
     //MARK: = View Cycle
     override func viewDidLoad() {
@@ -33,5 +33,12 @@ class ScanViewController: DetectViewController, DetectViewControllerProtocol {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+}
+
+extension ScanViewController {
+    //MARK: - Configure
+    func configure() {
+        
     }
 }

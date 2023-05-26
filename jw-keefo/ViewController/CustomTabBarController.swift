@@ -100,12 +100,7 @@ extension CustomTabBarController {
     func addCameraButtonView() {
         let scanTap = CameraButtonView(buttonImageName: "tabBar_camera")
         
-        let action = UIAction { _ in
-            let scanViewController = ScanViewController()
-            self.navigationController?.pushViewController(scanViewController, animated: true)
-        }
-        
-        scanTap.button.addAction(action, for: .touchUpInside)
+        scanTap.button.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
         
         self.tabBar.addSubview(scanTap)
         scanTap.snp.makeConstraints { make in
@@ -114,7 +109,6 @@ extension CustomTabBarController {
             make.height.equalTo(buttonHeight)
             make.width.equalTo(buttonWidth)
         }
-        
     }
     
     private func configureTapBarItem(tab: UIViewController, title: String, image: String, tag: Int) {
@@ -122,4 +116,34 @@ extension CustomTabBarController {
         tab.tabBarItem.image = UIImage(named: image)
         tab.tabBarItem.tag = tag
     }
+    
+    @objc private func scanButtonTapped() {
+        if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false) {
+                    self.presentScanViewController()
+                }
+            } else {
+                self.presentScanViewController()
+            }
+//        let scanViewController = ScanViewController()
+//        self.present(scanViewController, animated: true, completion: nil)
+//
+//        guard let rootViewController = self.view.window?.rootViewController else { return }
+//        rootViewController.present(scanViewController, animated: true)
+//        scanViewController.modalTransitionStyle = .flipHorizontal
+//        scanViewController.modalPresentationStyle = .fullScreen
+//
+////        self.navigationController?.pushViewController(scanViewController, animated: true) : - 왜 안되나요?
+//
+//        print("TAP!!!")
+    }
+    
+    private func presentScanViewController() {
+        let scanViewController = ScanViewController()
+        scanViewController.modalPresentationStyle = .fullScreen
+        self.present(scanViewController, animated: true, completion: nil)
+        print("TAP!!!")
+    }
 }
+
+
