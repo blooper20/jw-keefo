@@ -46,7 +46,7 @@ class PopupViewController: UIViewController {
     
     func addDimView() {
         dimView = UIView()
-        dimView.backgroundColor = .black.withAlphaComponent(0.8)
+        dimView.backgroundColor = .black.withAlphaComponent(0.7)
         
         self.snapShotView.addSubview(dimView)
         
@@ -62,7 +62,7 @@ class PopupViewController: UIViewController {
         
         succesScanPopUpView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview().offset(-10)
             make.height.equalTo(300)
             make.horizontalEdges.equalToSuperview().inset(45)
         }
