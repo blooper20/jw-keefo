@@ -9,54 +9,24 @@ import UIKit
 import SnapKit
 
 class BottomEventBannerView: UIView {
-    
+    //MARK: - Declaration
     private var datum: [Datum]
-    
-    //MARK: - Default Value
-    private let newsTitleSectionViewOffset = 20
-    private let newsTitleSectionViewHeight = 24
-    private let entireEventCollectionViewTopOffset = 13
-    private let collectionViewCellSize = CGSize.init(width: 176, height: 180)
-    private let collectionViewsectionInset = 15.0
-    
-    
-    //MARK: - UI Component
-    private lazy var newsTitleSectionView: NewsTitleSectionView = .init()
-    
-    private lazy var entireEventCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = collectionViewCellSize
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: .zero, left: collectionViewsectionInset, bottom: .zero, right: collectionViewsectionInset)
-        
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.register(EntireEventCollectionViewCell.self, forCellWithReuseIdentifier: "entireEventCollectionViewIdentifier")
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        return collectionView
-    }()
-    
-    private lazy var horizontalScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.isScrollEnabled = true
-        return scrollView
-    }()
-    
-    
+    private var newsTitleSectionView: NewsTitleSectionView!
+    private var entireEventCollectionView: UICollectionView!
+
     //MARK: - Initialize
     convenience init(datum: [Datum]) {
         self.init()
         self.datum = datum
-        configure()
+        
+        addNewsTitleSectionView()
+        addEntireEventCollectionView()
     }
 
     override init(frame: CGRect) {
         self.datum = [Datum]()
         super.init(frame: frame)
     }
-
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,20 +34,37 @@ class BottomEventBannerView: UIView {
 }
 
 extension BottomEventBannerView {
-    //MARK: - Constraints
-    func configure() {
+    //MARK: - Add View
+    private func addNewsTitleSectionView() {
+        newsTitleSectionView = NewsTitleSectionView()
+        
         self.addSubview(newsTitleSectionView)
+        
         newsTitleSectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(newsTitleSectionViewOffset)
+            make.top.equalToSuperview().offset(20)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(newsTitleSectionViewHeight)
+            make.height.equalTo(24)
         }
+    }
+    
+    private func addEntireEventCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize.init(width: 176, height: 180)
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: .zero, left: 15.0, bottom: .zero, right: 15.0)
+        
+        entireEventCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        entireEventCollectionView.dataSource = self
+        entireEventCollectionView.register(EntireEventCollectionViewCell.self, forCellWithReuseIdentifier: "entireEventCollectionViewIdentifier")
+        entireEventCollectionView.showsVerticalScrollIndicator = false
+        entireEventCollectionView.showsHorizontalScrollIndicator = false
         
         self.addSubview(entireEventCollectionView)
+        
         entireEventCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(newsTitleSectionView.snp.bottom).offset(entireEventCollectionViewTopOffset)
+            make.top.equalTo(newsTitleSectionView.snp.bottom).offset(13)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(collectionViewCellSize.height)
+            make.height.equalTo(CGSize.init(width: 176, height: 180).height)
         }
     }
 }

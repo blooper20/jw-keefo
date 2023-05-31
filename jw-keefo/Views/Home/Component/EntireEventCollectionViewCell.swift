@@ -9,62 +9,21 @@ import UIKit
 import SnapKit
 
 class EntireEventCollectionViewCell: UICollectionViewCell {
-    
-    //    private var datum: Datum
-    
-    //MARK: - Default Value
-    private lazy var eventImageRadius = 8.0
-    private lazy var eventTitleLabelSize = 12.0
-    private var tagHeight = 20
-    private lazy var tagStackViewSpacing = 7.0
-    private lazy var eventTitleLabelHeight = 40
-    private lazy var scrollViewTopOffset = 10.0
-    private lazy var eventTitleLabelTopOffset = 9.0
-    
-    //MARK: - UI Componenet
-    private var tagStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .top // alignment 변경
-        stackView.distribution = .fill // distribution 변경
-        
-        return stackView
-    }()
-    
-    private var horizontalScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.isScrollEnabled = true
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        
-        return scrollView
-    }()
-    
-    private lazy var eventImageView: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageView.layer.cornerRadius = eventImageRadius
-        imageView.layer.masksToBounds = true
-        
-        return imageView
-    }()
-    
-    private lazy var eventTitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: eventTitleLabelSize, weight: .semibold)
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping // 단어 단위 줄 바꿈
-        label.textAlignment = .left
-        
-        
-        
-        return label
-    }()
+    //MARK: - Declaration
+    private var tagStackView: UIStackView!
+    private var horizontalScrollView: UIScrollView!
+    private var eventImageView: UIImageView!
+    private var eventTitleLabel: UILabel!
     
     //MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         configure()
+        addTagStackView()
+        addEventImageView()
+        addHorizontalScrollView()
+        addEventTitleLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -76,31 +35,61 @@ extension EntireEventCollectionViewCell {
     //MARK: - Constraints
     private func configure() {
         backgroundColor = .white
+    }
+    
+    //MARK: - Add View
+    private func addTagStackView() {
+        tagStackView = UIStackView()
+        tagStackView.axis = .horizontal
+        tagStackView.alignment = .top
+        tagStackView.distribution = .fill
+    }
+    
+    private func addEventImageView() {
+        eventImageView = UIImageView()
+        eventImageView.layer.cornerRadius = 8.0
+        eventImageView.layer.masksToBounds = true
         
         self.addSubview(eventImageView)
+        
         eventImageView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalToSuperview()
         }
+    }
+    
+    private func addHorizontalScrollView() {
+        horizontalScrollView = UIScrollView()
+        horizontalScrollView.isScrollEnabled = true
+        horizontalScrollView.showsVerticalScrollIndicator = false
+        horizontalScrollView.showsHorizontalScrollIndicator = false
         
         self.addSubview(horizontalScrollView)
+        
         horizontalScrollView.snp.makeConstraints { make in
-            make.top.equalTo(eventImageView.snp.bottom).offset(scrollViewTopOffset)
+            make.top.equalTo(eventImageView.snp.bottom).offset(10.0)
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(tagHeight)
+            make.height.equalTo(20)
         }
+    }
+
+    private func addEventTitleLabel() {
+        eventTitleLabel = UILabel()
+        eventTitleLabel.font = .systemFont(ofSize: 12.0, weight: .semibold)
+        eventTitleLabel.numberOfLines = 0
+        eventTitleLabel.lineBreakMode = .byWordWrapping
+        eventTitleLabel.textAlignment = .left
         
         self.addSubview(eventTitleLabel)
+        
         eventTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(horizontalScrollView.snp.bottom)
             make.bottom.horizontalEdges.equalToSuperview()
         }
-        
-        
-        
     }
+    
     //MARK: - Function
-    private func binding(datum: Datum) {
+    func binding(datum: Datum) {
         eventTitleLabel.text = datum.name
         urlToImage(urlString: datum.bannerImage) { image in
             
@@ -109,21 +98,22 @@ extension EntireEventCollectionViewCell {
                     self.eventImageView.image = image
                 } else {
                     self.eventImageView.image = UIImage()
+                    // 이미지를 못받아왔을 경우에 사용되는 로직 작성
                 }
             }
         }
-        
         
         datum.eventTag.forEach { event in
             let tagView = TagView(tagContent: event.tag)
             
             tagStackView.addArrangedSubview(tagView)
+            
             tagView.snp.makeConstraints { make in
-                make.height.equalTo(tagHeight)
+                make.height.equalTo(20)
             }
         }
         
-        tagStackView.spacing = tagStackViewSpacing
+        tagStackView.spacing = 7.0
         
         self.horizontalScrollView.addSubview(tagStackView)
         tagStackView.snp.makeConstraints { make in
@@ -131,10 +121,11 @@ extension EntireEventCollectionViewCell {
         }
         
         self.addSubview(eventTitleLabel)
+        
         eventTitleLabel.snp.remakeConstraints { make in
-            make.top.equalTo(horizontalScrollView.snp.bottom).offset(eventTitleLabelTopOffset)
+            make.top.equalTo(horizontalScrollView.snp.bottom).offset(9.0)
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(eventTitleLabelHeight)
+            make.height.equalTo(40)
         }
     }
     
@@ -157,7 +148,6 @@ extension EntireEventCollectionViewCell {
                 completion(nil)
             }
         }
-        
         task.resume()
     }
     

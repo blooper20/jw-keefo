@@ -9,47 +9,16 @@ import UIKit
 import SnapKit
 
 class NewsTitleSectionView: UIView {
-    
-    //MARK: - Default Value
-    private let eventLabelTitle = "이벤트 소식"
-    private let eventLabelSize = 20.0
-    private let eventLabelOffset = 16
-    
-    private let viewAllButtonTitle = "전체보기"
-    private let viewAllButtonTitleSize = 9.0
-    private let viewAllButtonOffset = 12
-    
-    //MARK: - UI Component
-    private lazy var eventLabel: UILabel = {
-        let label = UILabel()
-        label.text = eventLabelTitle
-        label.textColor = .black
-        label.font = .systemFont(ofSize: eventLabelSize, weight: .semibold)
-        label.sizeToFit()
-        
-        return label
-    }()
-    
-    private lazy var viewAllButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(viewAllButtonTitle, for: .normal)
-        button.setUnderline()
-        button.titleLabel?.textColor = UIColor(hexCode: "#d0cfcf")
-        button.titleLabel?.font = .systemFont(ofSize: viewAllButtonTitleSize, weight: .semibold)
-        button.titleLabel?.sizeToFit()
-        
-        return button
-    }()
+    //MARK: - Declaration
+    private var eventLabel: UILabel!  
+    private var viewAllButton: UIButton!
     
     //MARK: - Initialize
-    //    convenience init() {
-    //        self.init()
-    //        configure()
-    //    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        
+        addEventLabel()
+        addViewAllButton()
     }
     
     required init?(coder: NSCoder) {
@@ -58,17 +27,34 @@ class NewsTitleSectionView: UIView {
 }
 
 extension NewsTitleSectionView {
-    //MARK: - Constraints
-    private func configure() {
+    //MARK: - Add View
+    private func addEventLabel() {
+        eventLabel = UILabel()
+        eventLabel.text = "이벤트 소식"
+        eventLabel.textColor = .black
+        eventLabel.font = .systemFont(ofSize: 20.0, weight: .semibold)
+        eventLabel.sizeToFit()
+        
         self.addSubview(eventLabel)
+        
         eventLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(eventLabelOffset)
+            make.left.equalToSuperview().offset(16)
             make.verticalEdges.equalToSuperview()
         }
+    }
+    
+    private func addViewAllButton() {
+        viewAllButton = UIButton()
+        viewAllButton.setTitle("전체보기", for: .normal)
+        viewAllButton.setUnderline()
+        viewAllButton.titleLabel?.textColor = UIColor(hexCode: "#d0cfcf")
+        viewAllButton.titleLabel?.font = .systemFont(ofSize: 9.0, weight: .semibold)
+        viewAllButton.titleLabel?.sizeToFit()
         
         self.addSubview(viewAllButton)
+        
         viewAllButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-viewAllButtonOffset)
+            make.right.equalToSuperview().offset(-12)
             make.verticalEdges.equalToSuperview()
         }
     }

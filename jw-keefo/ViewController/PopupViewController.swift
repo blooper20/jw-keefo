@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class PopupViewController: UIViewController {
-    
+    //MARK: - Declaration
     private var scanResponse: ScanResponse!
     var succesScanPopUpView: SuccesScanPopUpView!
     private var snapShotView: UIView!
@@ -30,15 +30,16 @@ class PopupViewController: UIViewController {
     //MARK: - View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        
+        addSnapShotView()
         addDimView()
         addSuccesScanPopUpView()
     }
 }
 
 extension PopupViewController {
-    //MARK: - Configure
-    private func configure() {
+    //MARK: - Add View
+    private func addSnapShotView() {
         
         self.view.addSubview(snapShotView)
         

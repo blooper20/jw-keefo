@@ -9,34 +9,17 @@ import UIKit
 import SnapKit
 
 class ScanTipView: UIView {
-    
-    //MARK: - Default Value
-    private let contentTitleWidth = 149
-    private let scanTipTitle = "스캔 TIP"
+    //MARK: - Declaration
     private let contentTitleArray = [("tip1", "수평을 맞춰서 스캔해주세요."),("tip2", "어두울땐 플래시를 켜주세요.")]
-    private let contentTitleFontSize = 14.0
-    
-    //MARK: - UI Component
-    private lazy var scanTipTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.text = scanTipTitle
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
-        
-        return label
-    }()
-    
-    private lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        
-        return stackView
-    }()
-    
+    private var scanTipTitleLabel: UILabel!
+    private var verticalStackView: UIStackView!
     //MARK: - Initialize
         override init(frame: CGRect) {
             super.init(frame: frame)
+            
             configure()
+            addScanTipTitleLabel()
+            addVerticalStackView()
             configureScanTip()
         }
         
@@ -51,20 +34,34 @@ extension ScanTipView {
         self.layer.cornerRadius = 8
         self.layer.masksToBounds = true
         self.backgroundColor = .black.withAlphaComponent(0.8)
+    }
+    
+    private func addScanTipTitleLabel() {
+        scanTipTitleLabel = UILabel()
+        scanTipTitleLabel.textColor = .white
+        scanTipTitleLabel.text = "스캔 TIP"
+        scanTipTitleLabel.font = .systemFont(ofSize: 14.0, weight: .semibold)
+
         self.addSubview(scanTipTitleLabel)
+        
         scanTipTitleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(12)
             make.height.equalTo(18)
         }
+    }
+    
+    private func addVerticalStackView() {
+        verticalStackView = UIStackView()
+        verticalStackView.axis = .vertical
         
         self.addSubview(verticalStackView)
+        
         verticalStackView.snp.makeConstraints { make in
             make.top.equalTo(scanTipTitleLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
         }
     }
-    
     
     private func configureScanTip() {
         contentTitleArray.forEach { (image, contentTitle) in
@@ -92,7 +89,7 @@ extension ScanTipView {
                     label.text = contentTitle
                     label.sizeToFit()
                     label.textColor = UIColor(hexCode: "#767676")
-                    label.font = .systemFont(ofSize: self.contentTitleFontSize, weight: .regular)
+                    label.font = .systemFont(ofSize: 14.0, weight: .regular)
                     
                     return label
                 }()

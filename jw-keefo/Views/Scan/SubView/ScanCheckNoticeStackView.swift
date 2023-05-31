@@ -16,6 +16,7 @@ class ScanCheckNoticeStackView: UIStackView {
     //MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         configure()
         addCheckingLabel()
         addCheckingIcon()

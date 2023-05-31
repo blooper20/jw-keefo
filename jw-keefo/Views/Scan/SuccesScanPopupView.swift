@@ -9,22 +9,21 @@ import UIKit
 import SnapKit
 
 class SuccesScanPopUpView: UIView {
-    
-    private var scanResponse: ScanResponse!
-    
-    //MARK: - Declaration View
+    //MARK: - Declaration
     var confirmButton: UIButton!
     private var contentView: UIView!
     private var scanCheckNoticeStackView: ScanCheckNoticeStackView!
     private var ticketInfoStackView: UIStackView!
     private var ticketInfoContentStackView: TicketInfoContentStackView!
     
+    private var scanResponse: ScanResponse!
     
     
     //MARK: - Initialize
     convenience init(scanResponse: ScanResponse) {
         self.init()
         self.scanResponse = scanResponse
+        
         configure()
         addContentView()
         addScanCheckNoticeStackView()
@@ -110,19 +109,15 @@ extension SuccesScanPopUpView {
             
             self.ticketInfoStackView.addArrangedSubview(ticketInfoContentStackView)
         }
-        
     }
     
     
     private func addConfirmButton() {
         confirmButton = UIButton()
-        
         confirmButton.setTitle("확인", for: .normal)
         confirmButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         confirmButton.titleLabel?.textColor = .white
-        
         confirmButton.backgroundColor = .black
-        
         confirmButton.layer.cornerRadius = 11
         confirmButton.layer.masksToBounds = true
         
@@ -134,6 +129,4 @@ extension SuccesScanPopUpView {
             make.height.equalTo(50)
         }
     }
-    
-    
 }

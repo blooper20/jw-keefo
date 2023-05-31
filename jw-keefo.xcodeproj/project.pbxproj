@@ -14,7 +14,6 @@
 		2F3FCCE52A1C403E00AEF9CE /* LabCodeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F3FCCE82A1C431900AEF9CE /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */; };
 		2F5086012A25872D007EFE3C /* ScanNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */; };
-		2F7FD4042A1C4E2C00F98817 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4032A1C4E2C00F98817 /* HomeViewModel.swift */; };
 		2F7FD4182A1C5FE700F98817 /* SpalashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */; };
 		2F7FD4262A1C7FB400F98817 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4252A1C7FB400F98817 /* Network.swift */; };
 		2F7FD4282A1C96E700F98817 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4272A1C96E700F98817 /* UserResponse.swift */; };
@@ -83,7 +82,6 @@
 		2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LabCodeSDK.xcframework; path = LabCodeSDK/SDK/LabCodeSDK.xcframework; sourceTree = "<group>"; };
 		2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanNavigationBarView.swift; sourceTree = "<group>"; };
-		2F7FD4032A1C4E2C00F98817 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalashViewModel.swift; sourceTree = "<group>"; };
 		2F7FD4252A1C7FB400F98817 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2F7FD4272A1C96E700F98817 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		2FBF24852A14B4560080CFAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2FBF24942A14B5AD0080CFAD /* Common */,
 				2FBF24902A14B53D0080CFAD /* Home */,
 				2FBF24912A14B54E0080CFAD /* Scan */,
 				2FBF24922A14B5680080CFAD /* CustomTabBar */,
@@ -198,7 +195,6 @@
 		2FBF24862A14B4660080CFAD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2F7FD4032A1C4E2C00F98817 /* HomeViewModel.swift */,
 				2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */,
 				2F88126F2A20487300EB5E3B /* ScanViewModel.swift */,
 			);
@@ -269,13 +265,6 @@
 				2F7FD4292A1C970700F98817 /* ScanResponse.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		2FBF24942A14B5AD0080CFAD /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		2FBF249D2A14BC2E0080CFAD /* SubView */ = {
@@ -562,7 +551,6 @@
 				2FC50F9B2A14AD78007AC7A5 /* SceneDelegate.swift in Sources */,
 				2F5086012A25872D007EFE3C /* ScanNavigationBarView.swift in Sources */,
 				2F1917322A1B204900D5B777 /* NewsTitleSectionView.swift in Sources */,
-				2F7FD4042A1C4E2C00F98817 /* HomeViewModel.swift in Sources */,
 				2FBF24A22A14C4AA0080CFAD /* CameraButtonView.swift in Sources */,
 				2FBF248B2A14B4FF0080CFAD /* HomeViewController.swift in Sources */,
 				2FBF24982A14B76D0080CFAD /* BottomEventBannerView.swift in Sources */,
@@ -648,7 +636,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				EXCLUDED_ARCHS = "";
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -709,7 +697,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXCLUDED_ARCHS = "";
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

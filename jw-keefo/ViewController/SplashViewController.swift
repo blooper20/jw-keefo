@@ -14,31 +14,20 @@ class SplashViewController: UIViewController {
     private var viewModel: SplashViewModel
     private var datum: [Datum]
     
-    //MARK: - UI Component
-    private lazy var keefoBackgroundView: UIImageView = {
-        let ImageView = UIImageView()
-        ImageView.image = UIImage(named: "splash3")
-        ImageView.contentMode = .scaleAspectFill
-        return ImageView
-    }()
+    //MARK: - Declaration
+    private var keefoBackgroundView: UIImageView!
+    private var lottieView: LottieAnimationView!
     
-    private lazy var lottieView: LottieAnimationView = {
-        let view = LottieAnimationView(name: "heart_rain")
-        view.contentMode = .scaleAspectFill
-        view.loopMode = .playOnce
-        view.animationSpeed = 1
-        return view
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        
+        addKeefoBackgroundView()
         addLottieView()
         userLogin()
     }
     
     //MARK: - Initialize
-    
     init(viewModel: SplashViewModel) {
         self.viewModel = viewModel
         self.datum = [Datum].init()
@@ -52,16 +41,27 @@ class SplashViewController: UIViewController {
 }
 
 extension SplashViewController {
-    // MARK: - Function
-    private func configure() {
+    //MARK: Add View
+    private func addKeefoBackgroundView() {
+        keefoBackgroundView = UIImageView()
+        keefoBackgroundView.image = UIImage(named: "splash3")
+        keefoBackgroundView.contentMode = .scaleAspectFill
+        
         self.view.addSubview(keefoBackgroundView)
+        
         keefoBackgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
     private func addLottieView() {
+        lottieView = LottieAnimationView(name: "heart_rain")
+        lottieView.contentMode = .scaleAspectFill
+        lottieView.loopMode = .playOnce
+        lottieView.animationSpeed = 1
+        
         self.view.addSubview(lottieView)
+        
         lottieView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

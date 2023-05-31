@@ -10,32 +10,26 @@ import SnapKit
 
 class HomeView: UIView {
     
+    
+    //MARK: - Declaration
     var datum: [Datum]
-    
-    // MARK: - Default Value
-    private let logoImageViewHeight = 48
-    private let imageHeight = 367
-    private let customTabBarHeight = 72
-    
-//MARK: - UI Component
-    
-    private lazy var topLogoView: TopLogoView = .init()
-    private lazy var topImageBannerView: TopImageBannerView = .init()
+    private var topLogoView: TopLogoView!
+    private var homeScrollView: UIScrollView!
+    private var topImageBannerView: TopImageBannerView!
     private var bottomEventBannerView: BottomEventBannerView
-    private lazy var homeScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.isScrollEnabled = true
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        
-        return scrollView
-    }()
     
-//MARK: - Initailize
+    
+    
+    //MARK: - Initailize
     convenience init(datum: [Datum]) {
         self.init()
         self.datum = datum
+        
         configure()
+        addTopLogoView()
+        addHomeScrollView()
+        addTopImageBannerView()
+        addBottomEventBannerView()
     }
     
     override init(frame: CGRect) {
@@ -47,44 +41,65 @@ class HomeView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
 }
 
 extension HomeView {
-    //MARK: - Constraints
+    //MARK: - Configure
     private func configure() {
-        bottomEventBannerView = BottomEventBannerView.init(datum: datum)
-        backgroundColor = .white
+        self.backgroundColor = .white
+    }
+    
+    //MARK: - Add View
+    private func addTopLogoView() {
+        topLogoView = TopLogoView()
         
         self.addSubview(topLogoView)
+        
         topLogoView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
-            make.height.equalTo(logoImageViewHeight)
-
+            make.height.equalTo(48)
         }
+    }
+    
+    private func addHomeScrollView() {
+        homeScrollView = UIScrollView()
+        homeScrollView.isScrollEnabled = true
+        homeScrollView.showsVerticalScrollIndicator = false
+        homeScrollView.showsHorizontalScrollIndicator = false
         
         self.addSubview(homeScrollView)
+        
         homeScrollView.snp.makeConstraints { make in
             make.top.equalTo(topLogoView.snp.bottom)
             make.bottom.equalToSuperview()
             make.width.equalTo(self.snp.width)
         }
-        
+    }
+    
+    private func addTopImageBannerView() {
+        topImageBannerView = TopImageBannerView()
         
         self.homeScrollView.addSubview(topImageBannerView)
+        
         topImageBannerView.snp.makeConstraints { make in
-            make.height.equalTo(imageHeight)
+            make.height.equalTo(367)
             make.top.width.equalToSuperview()
         }
-
+    }
+    
+    private func addBottomEventBannerView() {
+        bottomEventBannerView = BottomEventBannerView.init(datum: datum)
+        
         self.homeScrollView.addSubview(bottomEventBannerView)
+        
         self.bottomEventBannerView.snp.makeConstraints { make in
             make.top.equalTo(topImageBannerView.snp.bottom)
             make.width.equalTo(self.snp.width)
-            make.height.equalTo(270 + customTabBarHeight)
+            make.height.equalTo(270 + 72)
             make.bottom.equalToSuperview()
         }
     }
-
+    
 }

@@ -11,64 +11,22 @@ import SnapKit
 import AVKit
 
 class ScanViewController: DetectViewController {
-    
+    //MARK: - Declaration
     private var viewModel: ScanViewModel
     private var scanResponse: ScanResponse!
-    
     private let zoomOnImage: UIImage! = UIImage(named: "zoom_on_admin")
     private let zoomOffImage: UIImage! = UIImage(named: "zoom_off_admin")
     private let torchOnImage: UIImage! = UIImage(named: "torch_on_admin")
     private let torchoffImage: UIImage! = UIImage(named: "torch_off_admin")
     
-    //MARK: - UI Component
-    private lazy var scanNavigationBarView = ScanNavigationBarView()
-    
-    private lazy var torchButton: UIButton = {
-        let button = UIButton()
-        button.setImage(torchOnImage, for: .normal)
-        button.addTarget(self, action: #selector(tapTorchButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var zoomButton: UIButton = {
-        let button = UIButton()
-        button.setImage(zoomOnImage, for: .normal)
-        button.addTarget(self, action: #selector(tapZoomButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    private lazy var horizontalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
-        
-        return stackView
-    }()
-    
-    private lazy var scanAim: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "focus_off_icon")
-        
-        return imageView
-    }()
-    
-    private lazy var scanFrame: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "scan_frame_admin")
-        
-        return imageView
-    }()
-    
-    private lazy var scanFrameDot: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "scan_frame_dot_admin")
-        
-        return imageView
-    }()
-    
-    private lazy var scanTipView = ScanTipView()
+    private var scanNavigationBarView: ScanNavigationBarView!
+    private var torchButton: UIButton!
+    private var zoomButton: UIButton!
+    private var horizontalStackView: UIStackView!
+    private var scanAim: UIImageView!
+    private var scanFrame: UIImageView!
+    private var scanFrameDot: UIImageView!
+    private var scanTipView: ScanTipView!
     
     
     //MARK: - Initialize
@@ -87,6 +45,14 @@ class ScanViewController: DetectViewController {
         self.delegate = self
         self.activateLabTracking(uniqueValue: "스냅태그")
         
+        addScanNavigationBarView()
+        addHorizontalStackView()
+        addTorchButton()
+        addZoomButton()
+        addScanAim()
+        addScanFrame()
+        addScanFrameDot()
+        addScanTipView()
         addTapTarget()
         configure()
     }
@@ -102,56 +68,105 @@ class ScanViewController: DetectViewController {
 
 extension ScanViewController {
     //MARK: - Configure
-    
     private func configure() {
         self.setSoundStatus(value: true)
         self.setVibrationStatus(value: true)
+    }
+    
+    //MARK: - Add View
+    private func addScanNavigationBarView() {
+        scanNavigationBarView = ScanNavigationBarView()
         
         self.view.addSubview(scanNavigationBarView)
+        
         scanNavigationBarView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(40)
         }
-        
-        horizontalStackView.addArrangedSubview(torchButton)
-        torchButton.snp.makeConstraints { make in
-            make.width.height.equalTo(42)
-        }
-        
-        horizontalStackView.addArrangedSubview(zoomButton)
-        zoomButton.snp.makeConstraints { make in
-            make.width.height.equalTo(42)
-        }
+    }
+    
+    private func addHorizontalStackView() {
+        horizontalStackView = UIStackView()
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.distribution = .equalCentering
         
         self.view.addSubview(horizontalStackView)
+        
         horizontalStackView.snp.makeConstraints { make in
             make.width.equalTo(scanNavigationBarView.adminModeLabel.snp.width)
             make.height.equalTo(42)
             make.top.equalTo(scanNavigationBarView.snp.bottom).offset(14)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    private func addTorchButton() {
+        torchButton = UIButton()
+        torchButton.setImage(torchOnImage, for: .normal)
+        torchButton.addTarget(self, action: #selector(tapTorchButton), for: .touchUpInside)
+        
+        horizontalStackView.addArrangedSubview(torchButton)
+        
+        torchButton.snp.makeConstraints { make in
+            make.width.height.equalTo(42)
+        }
+    }
+    
+    private func addZoomButton() {
+        zoomButton = UIButton()
+        zoomButton.setImage(zoomOnImage, for: .normal)
+        zoomButton.addTarget(self, action: #selector(tapZoomButton), for: .touchUpInside)
+        
+        horizontalStackView.addArrangedSubview(zoomButton)
+        
+        zoomButton.snp.makeConstraints { make in
+            make.width.height.equalTo(42)
+        }
+    }
+    
+    private func addScanAim() {
+        scanAim  = UIImageView()
+        scanAim.image = UIImage(named: "focus_off_icon")
         
         self.view.addSubview(scanAim)
+        
         scanAim.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.height.equalTo(30)
         }
+    }
+    
+    private func addScanFrame() {
+        scanFrame = UIImageView()
+        scanFrame.image = UIImage(named: "scan_frame_admin")
         
         self.view.addSubview(scanFrame)
+        
         scanFrame.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.height.equalTo(165)
         }
+    }
+    
+    private func addScanFrameDot() {
+        scanFrameDot = UIImageView()
+        scanFrameDot.image = UIImage(named: "scan_frame_dot_admin")
         
         self.view.addSubview(scanFrameDot)
+        
         scanFrameDot.snp.makeConstraints { make in
             make.left.equalTo(scanFrame.snp.right)
             make.bottom.equalTo(scanFrame.snp.top)
             make.width.height.equalTo(32)
         }
+    }
+    
+    private func addScanTipView() {
+        scanTipView = ScanTipView()
         
         self.view.addSubview(scanTipView)
+        
         scanTipView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-36)
@@ -159,10 +174,7 @@ extension ScanViewController {
             make.height.equalToSuperview().multipliedBy(0.2)
         }
     }
-    
-    private func addTapTarget() {
-        scanNavigationBarView.backButton.addTarget(self, action: #selector(goOutside), for: .touchUpInside)
-    }
+
     //MARK: - Selector
     @objc func goOutside(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -181,7 +193,6 @@ extension ScanViewController {
         self.setZoomButton(value: !zoomStatus)
     }
     
-    //MARK: - Selector
     @objc func confirmTap(sender: UITapGestureRecognizer) {
         self.dismiss(animated: true)
         self.startSession()
@@ -208,13 +219,18 @@ extension ScanViewController: DetectViewControllerProtocol {
             }
         } else {
             self.startSession()
-            //            관리자 계정이 아니었을 경우해 하는 예외처리(관리자 계정이 아니라는 팝업같은걸 띄움)
+            //            관리자 계정이 아니었을 경우해 하는 예외처리(관리자 계정이 아니라는 팝업을 띄움)
         }
     }
 }
 
 //MARK: - Function
 extension ScanViewController {
+    
+    private func addTapTarget() {
+        scanNavigationBarView.backButton.addTarget(self, action: #selector(goOutside), for: .touchUpInside)
+    }
+    
     private func setTorchButton(value: Bool) {
         let torchImage: UIImage = (value) ? self.torchOnImage : self.torchoffImage
         self.torchButton.setImage(torchImage, for: .normal)

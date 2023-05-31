@@ -10,34 +10,16 @@ import SnapKit
 
 class ScanNavigationBarView: UIView {
     
-    //MARK: - UI Component
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "chevron.backward")
-        button.setImage(image, for: .normal)
-        button.imageView?.tintColor = .black
-        
-        return button
-    }()
-    
-    lazy var adminModeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "관리자 모드"
-        label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.layer.cornerRadius = 6
-        label.layer.masksToBounds = true
-        label.textAlignment = .center
-        label.textColor = .red
-        label.backgroundColor = .black
-        label.sizeToFit()
-        
-        return label
-    }()
+    //MARK: - Declaration
+    var backButton: UIButton!
+    var adminModeLabel: UILabel!
     
     //MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        
+        addBackButton()
+        addAdminModeLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -46,17 +28,36 @@ class ScanNavigationBarView: UIView {
 }
 
 extension ScanNavigationBarView {
-    //MARK: - Configure
-    private func configure() {
+    //MARK: - Add View
+    private func addBackButton() {
+        backButton = UIButton()
+        let image = UIImage(systemName: "chevron.backward")
+        backButton.setImage(image, for: .normal)
+        backButton.imageView?.tintColor = .black
+        
         self.addSubview(backButton)
+        
         backButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(24)
             make.verticalEdges.equalToSuperview()
             make.width.equalTo(25)
             make.centerY.equalToSuperview()
         }
+    }
+    
+    private func addAdminModeLabel() {
+        adminModeLabel = UILabel()
+        adminModeLabel.text = "관리자 모드"
+        adminModeLabel.font = .systemFont(ofSize: 14, weight: .bold)
+        adminModeLabel.layer.cornerRadius = 6
+        adminModeLabel.layer.masksToBounds = true
+        adminModeLabel.textAlignment = .center
+        adminModeLabel.textColor = .red
+        adminModeLabel.backgroundColor = .black
+        adminModeLabel.sizeToFit()
         
         self.addSubview(adminModeLabel)
+        
         adminModeLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.verticalEdges.equalToSuperview()

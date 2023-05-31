@@ -10,15 +10,8 @@ import SnapKit
 
 class CustomTabBarController: UITabBarController {
     
+    //MARK: - Declaration
     var datum: [Datum]
-    
-    //MARK: - Default Value
-    private let tabBarHeight = 200.0
-    private let tabBarCornerRadius = 24.0
-    private var bottomMargin = 32
-    private let buttonWidth = 52.0
-    private let buttonHeight = 48.0
-    private let buttonTopOffset = 8.0
     
     //MARK: - Initialize
     init(datum: [Datum]) {
@@ -38,12 +31,11 @@ class CustomTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setTabBar()
         configure()
         addCameraButtonView()
-        
     }
-    
 }
 
 extension CustomTabBarController {
@@ -53,39 +45,41 @@ extension CustomTabBarController {
         tabBar.backgroundColor = .white
         tabBar.unselectedItemTintColor = UIColor(hexCode: "#9d9d9d")
         
-        tabBar.frame.size.height = tabBarHeight
-        tabBar.frame.origin.y = self.view.frame.size.height - tabBarHeight
-        tabBar.layer.cornerRadius = tabBarCornerRadius
+        tabBar.frame.size.height = 200.0
+        tabBar.frame.origin.y = self.view.frame.size.height - 200.0
+        tabBar.layer.cornerRadius = 24.0
         tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabBar.layer.masksToBounds = true
         
         if let tabBar = self.tabBarController?.tabBar {
             
-            tabBar.frame.size.height = tabBarHeight
-            tabBar.frame.origin.y = self.view.frame.size.height - tabBarHeight
+            tabBar.frame.size.height = 200.0
+            tabBar.frame.origin.y = self.view.frame.size.height - 200.0
         }
     }
     
+    private func configureTapBarItem(tab: UIViewController, title: String, image: String, tag: Int) {
+        tab.title = title
+        tab.tabBarItem.image = UIImage(named: image)
+        tab.tabBarItem.tag = tag
+    }
+    
+    //MARK: - Setting
     private func setUpTabBarShadow() {
         tabBar.layer.shadowColor = UIColor.black.cgColor
         tabBar.layer.shadowOpacity = 0.4
         tabBar.layer.shadowOffset = CGSize(width: 0, height: 2)
         tabBar.layer.shadowRadius = 4
         tabBar.layer.masksToBounds = false
-        tabBar.layer.shadowPath = UIBezierPath(roundedRect: tabBar.bounds, cornerRadius: tabBarCornerRadius).cgPath
+        tabBar.layer.shadowPath = UIBezierPath(roundedRect: tabBar.bounds, cornerRadius: 24.0).cgPath
     }
-        
+    
     private func setTabBar() {
-        
         let homeVC = HomeViewController(datum: datum)
-        
         let shopVC = UIViewController()
-        
         let scanVC = UIViewController()
         scanVC.tabBarItem.isEnabled = false
-        
         let rankVC = UIViewController()
-        
         let myPageVC = UIViewController()
         
         configureTapBarItem(tab: homeVC, title: "Home", image: "homePage", tag: 0)
@@ -96,41 +90,37 @@ extension CustomTabBarController {
         setViewControllers([homeVC, shopVC, scanVC, rankVC, myPageVC], animated: true)
     }
     
-    private         func addCameraButtonView() {
+    //MARK: - Add View
+    private func addCameraButtonView() {
         let scanTap = CameraButtonView(buttonImageName: "tabBar_camera")
-        
-        scanTap.button.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
+        scanTap.cameraButton.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
         
         self.tabBar.addSubview(scanTap)
+        
         scanTap.snp.makeConstraints { make in
             make.centerX.equalTo(tabBar.snp.centerX)
-            make.top.equalTo(tabBar.snp.top).offset(-buttonTopOffset)
-            make.height.equalTo(buttonHeight)
-            make.width.equalTo(buttonWidth)
+            make.top.equalTo(tabBar.snp.top).offset(-8.0)
+            make.height.equalTo(48.0)
+            make.width.equalTo(52.0)
         }
     }
-    
-    private func configureTapBarItem(tab: UIViewController, title: String, image: String, tag: Int) {
-        tab.title = title
-        tab.tabBarItem.image = UIImage(named: image)
-        tab.tabBarItem.tag = tag
-    }
-    
-    @objc private func scanButtonTapped() {
-        if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false) {
-                    self.presentScanViewController()
-                }
-            } else {
-                self.presentScanViewController()
-            }
-    }
-    
+    //MARK: - Function
     private func presentScanViewController() {
         let scanViewModel = ScanViewModel()
         let scanViewController = ScanViewController(viewModel: scanViewModel)
         scanViewController.modalPresentationStyle = .fullScreen
         self.present(scanViewController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Selector
+    @objc private func scanButtonTapped() {
+        if let presentedViewController = self.presentedViewController {
+            presentedViewController.dismiss(animated: false) {
+                self.presentScanViewController()
+            }
+        } else {
+            self.presentScanViewController()
+        }
     }
 }
 

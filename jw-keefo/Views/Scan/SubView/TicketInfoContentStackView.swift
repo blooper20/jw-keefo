@@ -21,6 +21,7 @@ class TicketInfoContentStackView: UIStackView {
         self.init()
         self.title = title
         self.content = content
+        
         configure()
         addTitleLabel()
         addContentLabel()

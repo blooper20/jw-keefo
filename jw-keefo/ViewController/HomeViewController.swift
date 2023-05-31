@@ -9,13 +9,11 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
-    
+    //MARK: - Declaration
+    private var homeView: HomeView!
     private var datum: [Datum]
     
-    //MARK: - Ready To Views
-    private var homeView: HomeView
-    
-    // MARK: Initializers
+    // MARK: Initializer
     init(datum: [Datum]) {
         self.datum = datum
         self.homeView = HomeView(datum: datum)
@@ -29,11 +27,18 @@ class HomeViewController: UIViewController {
     //MARK: - View Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        
+        addHomeView()
     }
-    
-    private func configure() {
+}
+
+extension HomeViewController {
+    //MARK: - Add View
+    private func addHomeView() {
+        homeView = HomeView(datum: datum)
+        
         self.view.addSubview(homeView)
+        
         homeView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
