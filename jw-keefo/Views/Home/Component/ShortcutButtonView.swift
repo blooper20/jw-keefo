@@ -65,7 +65,7 @@ class ShortcutButtonView: UIView {
 
 extension ShortcutButtonView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         self.layer.cornerRadius = buttonRadius
         self.layer.masksToBounds = true
         self.backgroundColor = .black
@@ -89,7 +89,7 @@ extension ShortcutButtonView {
         }
     }
     
-    func addTapGesture() {
+    private func addTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         self.addGestureRecognizer(tapGesture)
     }

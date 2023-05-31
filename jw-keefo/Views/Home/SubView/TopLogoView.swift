@@ -14,7 +14,7 @@ class TopLogoView: UIView {
     private let logoImageViewHeight = 48
 
 //MARK: - UI Component
-    lazy var logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         let logoImage = UIImage(named: "top_navigation_logo")
         imageView.image = logoImage

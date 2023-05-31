@@ -8,7 +8,7 @@
 import Foundation
 
 class ScanViewModel {
-    let network: Network = Network()
+    private let network: Network = Network()
     private var scanResponse: ScanResponse!
 }
 

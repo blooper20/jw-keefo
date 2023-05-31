@@ -12,7 +12,7 @@ import SnapKit
 class SplashViewController: UIViewController {
     
     private var viewModel: SplashViewModel
-    var datum: [Datum]
+    private var datum: [Datum]
     
     //MARK: - UI Component
     private lazy var keefoBackgroundView: UIImageView = {
@@ -22,7 +22,7 @@ class SplashViewController: UIViewController {
         return ImageView
     }()
     
-    let lottieView: LottieAnimationView = {
+    private lazy var lottieView: LottieAnimationView = {
         let view = LottieAnimationView(name: "heart_rain")
         view.contentMode = .scaleAspectFill
         view.loopMode = .playOnce
@@ -53,21 +53,21 @@ class SplashViewController: UIViewController {
 
 extension SplashViewController {
     // MARK: - Function
-    func configure() {
+    private func configure() {
         self.view.addSubview(keefoBackgroundView)
         keefoBackgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    func addLottieView() {
+    private func addLottieView() {
         self.view.addSubview(lottieView)
         lottieView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    func animateAndNext() {
+    private func animateAndNext() {
         DispatchQueue.main.async {
             self.lottieView.play(toFrame: 120) { (value) in
                 Task {
@@ -86,13 +86,14 @@ extension SplashViewController {
         }
     }
     
-    func userLogin() {
+    private func userLogin() {
         viewModel.loginSDK(completion: { result in
             if result == true {
                 self.viewModel.userCheck()
                 self.animateAndNext()
             } else {
                 print("SDK 실패")
+                // SDK를 못받아 왔을 때 실행되는 로직
             }
         })
     }

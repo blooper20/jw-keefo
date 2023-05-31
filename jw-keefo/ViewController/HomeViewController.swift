@@ -10,10 +10,10 @@ import SnapKit
 
 class HomeViewController: UIViewController {
     
-    var datum: [Datum]
+    private var datum: [Datum]
     
     //MARK: - Ready To Views
-    var homeView: HomeView
+    private var homeView: HomeView
     
     // MARK: Initializers
     init(datum: [Datum]) {
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         configure()
     }
     
-    func configure() {
+    private func configure() {
         self.view.addSubview(homeView)
         homeView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

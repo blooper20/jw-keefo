@@ -12,8 +12,8 @@ class PopupViewController: UIViewController {
     
     private var scanResponse: ScanResponse!
     var succesScanPopUpView: SuccesScanPopUpView!
-    var snapShotView: UIView!
-    var dimView: UIView!
+    private var snapShotView: UIView!
+    private var dimView: UIView!
     
     
     //MARK: - Initialize
@@ -34,8 +34,11 @@ class PopupViewController: UIViewController {
         addDimView()
         addSuccesScanPopUpView()
     }
-    
-    func configure() {
+}
+
+extension PopupViewController {
+    //MARK: - Configure
+    private func configure() {
         
         self.view.addSubview(snapShotView)
         
@@ -44,7 +47,7 @@ class PopupViewController: UIViewController {
         }
     }
     
-    func addDimView() {
+    private func addDimView() {
         dimView = UIView()
         dimView.backgroundColor = .black.withAlphaComponent(0.7)
         
@@ -55,7 +58,7 @@ class PopupViewController: UIViewController {
         }
     }
     
-    func addSuccesScanPopUpView() {
+    private func addSuccesScanPopUpView() {
         succesScanPopUpView = SuccesScanPopUpView(scanResponse: scanResponse)
         
         self.snapShotView.addSubview(succesScanPopUpView)
@@ -67,5 +70,4 @@ class PopupViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(45)
         }
     }
-    
 }

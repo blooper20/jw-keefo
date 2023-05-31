@@ -11,7 +11,7 @@ import SnapKit
 class TagView: UIView {
     
 // MARK: - Default Value
-    var tagContent: String
+    private var tagContent: String
     private let tagTitleSize = 11.0
     private let tagTitleLabelHeight = 16
     private let tagTitleLabelVerticalEdgesInset = 2
@@ -19,7 +19,7 @@ class TagView: UIView {
     
 //MARK: - UI Component
     
-    lazy var tagTitle: UILabel = {
+    private lazy var tagTitle: UILabel = {
         let label = UILabel()
         label.text = "#\(tagContent)"
         label.font = .systemFont(ofSize: tagTitleSize, weight: .regular)
@@ -49,7 +49,7 @@ class TagView: UIView {
 
 extension TagView {
     //MARK: - Constraints
-    func configure() {
+    private func configure() {
         self.backgroundColor = UIColor(hexCode: "#eaeaea")
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 8
@@ -61,7 +61,7 @@ extension TagView {
         }
     }
     
-    func adjustTitleLabelSize() {
+    private func adjustTitleLabelSize() {
         let fittingSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat(tagTitleLabelHeight))
         let size = tagTitle.sizeThatFits(fittingSize)
         

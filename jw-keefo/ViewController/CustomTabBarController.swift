@@ -96,7 +96,7 @@ extension CustomTabBarController {
         setViewControllers([homeVC, shopVC, scanVC, rankVC, myPageVC], animated: true)
     }
     
-    func addCameraButtonView() {
+    private         func addCameraButtonView() {
         let scanTap = CameraButtonView(buttonImageName: "tabBar_camera")
         
         scanTap.button.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)

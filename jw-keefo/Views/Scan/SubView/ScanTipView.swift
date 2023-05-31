@@ -47,7 +47,7 @@ class ScanTipView: UIView {
 
 extension ScanTipView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         self.layer.cornerRadius = 8
         self.layer.masksToBounds = true
         self.backgroundColor = .black.withAlphaComponent(0.8)
@@ -66,7 +66,7 @@ extension ScanTipView {
     }
     
     
-    func configureScanTip() {
+    private func configureScanTip() {
         contentTitleArray.forEach { (image, contentTitle) in
             
             lazy var horizontalStackView: UIStackView = {

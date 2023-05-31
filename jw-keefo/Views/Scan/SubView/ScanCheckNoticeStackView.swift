@@ -29,7 +29,7 @@ class ScanCheckNoticeStackView: UIStackView {
 
 extension ScanCheckNoticeStackView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         self.backgroundColor = .clear
         self.axis = .horizontal
         self.alignment = .fill
@@ -37,7 +37,7 @@ extension ScanCheckNoticeStackView {
     }
     
     //MARK: - Add View
-    func addCheckingLabel() {
+    private func addCheckingLabel() {
         checkingLabel = UILabel()
         checkingLabel.text = "입장 확인 완료"
         checkingLabel.font = .systemFont(ofSize: 18, weight: .bold)
@@ -46,7 +46,7 @@ extension ScanCheckNoticeStackView {
         self.addArrangedSubview(checkingLabel)
     }
     
-    func addCheckingIcon() {
+    private func addCheckingIcon() {
         checkingIcon = UIImageView()
         checkingIcon.image = UIImage(named: "check_circle")
         checkingIcon.contentMode = .scaleAspectFit

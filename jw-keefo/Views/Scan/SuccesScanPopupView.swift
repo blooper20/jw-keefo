@@ -45,13 +45,13 @@ class SuccesScanPopUpView: UIView {
 
 extension SuccesScanPopUpView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 16
         self.layer.masksToBounds = true
     }
     
-    func addContentView() {
+    private func addContentView() {
         contentView = UIView()
         contentView.backgroundColor = .clear
         
@@ -64,7 +64,7 @@ extension SuccesScanPopUpView {
         }
     }
     
-    func addScanCheckNoticeStackView() {
+    private func addScanCheckNoticeStackView() {
         scanCheckNoticeStackView = ScanCheckNoticeStackView()
         
         self.contentView.addSubview(scanCheckNoticeStackView)
@@ -75,7 +75,7 @@ extension SuccesScanPopUpView {
         }
     }
     
-    func addTicketInfoStackView() {
+    private func addTicketInfoStackView() {
         ticketInfoStackView = UIStackView()
         ticketInfoStackView.axis = .vertical
         ticketInfoStackView.spacing = 8
@@ -89,7 +89,7 @@ extension SuccesScanPopUpView {
         }
     }
     
-    func addTicketInfoContentStackView() {
+    private func addTicketInfoContentStackView() {
         let date = scanResponse.data?.info?.advanceReservation?.advanceReservationEventDate?[0].eventDate?.date
         let session = scanResponse.data?.info?.advanceReservation?.advanceReservationEventDate?[0].advanceReservationEventSession?[0].eventSession?.name
         guard let quantity = scanResponse.data?.info?.advanceReservation?.ticketQuantity else { return }
@@ -114,7 +114,7 @@ extension SuccesScanPopUpView {
     }
     
     
-    func addConfirmButton() {
+    private func addConfirmButton() {
         confirmButton = UIButton()
         
         confirmButton.setTitle("확인", for: .normal)

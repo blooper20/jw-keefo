@@ -47,7 +47,7 @@ class ScanNavigationBarView: UIView {
 
 extension ScanNavigationBarView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         self.addSubview(backButton)
         backButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(24)

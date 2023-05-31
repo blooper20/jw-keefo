@@ -59,7 +59,7 @@ class NewsTitleSectionView: UIView {
 
 extension NewsTitleSectionView {
     //MARK: - Constraints
-    func configure() {
+    private func configure() {
         self.addSubview(eventLabel)
         eventLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(eventLabelOffset)

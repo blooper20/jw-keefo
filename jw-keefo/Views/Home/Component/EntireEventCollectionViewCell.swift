@@ -74,7 +74,7 @@ class EntireEventCollectionViewCell: UICollectionViewCell {
 
 extension EntireEventCollectionViewCell {
     //MARK: - Constraints
-    func configure() {
+    private func configure() {
         backgroundColor = .white
         
         self.addSubview(eventImageView)
@@ -100,7 +100,7 @@ extension EntireEventCollectionViewCell {
         
     }
     //MARK: - Function
-    func binding(datum: Datum) {
+    private func binding(datum: Datum) {
         eventTitleLabel.text = datum.name
         urlToImage(urlString: datum.bannerImage) { image in
             
@@ -138,7 +138,7 @@ extension EntireEventCollectionViewCell {
         }
     }
     
-    func urlToImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
+    private func urlToImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(nil)
             return

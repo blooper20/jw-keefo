@@ -15,15 +15,15 @@ class ScanViewController: DetectViewController {
     private var viewModel: ScanViewModel
     private var scanResponse: ScanResponse!
     
-    let zoomOnImage: UIImage! = UIImage(named: "zoom_on_admin")
-    let zoomOffImage: UIImage! = UIImage(named: "zoom_off_admin")
-    let torchOnImage: UIImage! = UIImage(named: "torch_on_admin")
-    let torchoffImage: UIImage! = UIImage(named: "torch_off_admin")
+    private let zoomOnImage: UIImage! = UIImage(named: "zoom_on_admin")
+    private let zoomOffImage: UIImage! = UIImage(named: "zoom_off_admin")
+    private let torchOnImage: UIImage! = UIImage(named: "torch_on_admin")
+    private let torchoffImage: UIImage! = UIImage(named: "torch_off_admin")
     
     //MARK: - UI Component
-    lazy var scanNavigationBarView = ScanNavigationBarView()
+    private lazy var scanNavigationBarView = ScanNavigationBarView()
     
-    lazy var torchButton: UIButton = {
+    private lazy var torchButton: UIButton = {
         let button = UIButton()
         button.setImage(torchOnImage, for: .normal)
         button.addTarget(self, action: #selector(tapTorchButton), for: .touchUpInside)
@@ -31,7 +31,7 @@ class ScanViewController: DetectViewController {
         return button
     }()
     
-    lazy var zoomButton: UIButton = {
+    private lazy var zoomButton: UIButton = {
         let button = UIButton()
         button.setImage(zoomOnImage, for: .normal)
         button.addTarget(self, action: #selector(tapZoomButton), for: .touchUpInside)
@@ -39,7 +39,7 @@ class ScanViewController: DetectViewController {
         return button
     }()
     
-    lazy var horizontalStackView: UIStackView = {
+    private lazy var horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .equalCentering
@@ -47,21 +47,21 @@ class ScanViewController: DetectViewController {
         return stackView
     }()
     
-    lazy var scanAim: UIImageView = {
+    private lazy var scanAim: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "focus_off_icon")
         
         return imageView
     }()
     
-    lazy var scanFrame: UIImageView = {
+    private lazy var scanFrame: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "scan_frame_admin")
         
         return imageView
     }()
     
-    lazy var scanFrameDot: UIImageView = {
+    private lazy var scanFrameDot: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "scan_frame_dot_admin")
         
@@ -103,7 +103,7 @@ class ScanViewController: DetectViewController {
 extension ScanViewController {
     //MARK: - Configure
     
-    func configure() {
+    private func configure() {
         self.setSoundStatus(value: true)
         self.setVibrationStatus(value: true)
         
@@ -160,7 +160,7 @@ extension ScanViewController {
         }
     }
     
-    func addTapTarget() {
+    private func addTapTarget() {
         scanNavigationBarView.backButton.addTarget(self, action: #selector(goOutside), for: .touchUpInside)
     }
     //MARK: - Selector
@@ -215,17 +215,17 @@ extension ScanViewController: DetectViewControllerProtocol {
 
 //MARK: - Function
 extension ScanViewController {
-    func setTorchButton(value: Bool) {
+    private func setTorchButton(value: Bool) {
         let torchImage: UIImage = (value) ? self.torchOnImage : self.torchoffImage
         self.torchButton.setImage(torchImage, for: .normal)
     }
     
-    func setZoomButton(value: Bool) {
+    private func setZoomButton(value: Bool) {
         let zoomImage: UIImage = (value) ? self.zoomOnImage : self.zoomOffImage
         self.zoomButton.setImage(zoomImage, for: .normal)
     }
     
-    func bringPopUpView() {
+    private func bringPopUpView() {
         DispatchQueue.main.async {
             let snapShotView =  self.view.snapshotView(afterScreenUpdates: true)
             let popupViewController = PopupViewController(snapShotView: snapShotView!, scanResponse: self.scanResponse)
@@ -236,7 +236,7 @@ extension ScanViewController {
         }
     }
     
-    func playSoundEvenIfMuted() {
+    private func playSoundEvenIfMuted() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
         } catch(let error) {

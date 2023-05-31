@@ -10,11 +10,11 @@ import SnapKit
 
 class TicketInfoContentStackView: UIStackView {
     
-    var title: String
-    var content: String
+    private var title: String
+    private var content: String
     
-    var titleLabel: UILabel!
-    var contentLabel: UILabel!
+    private var titleLabel: UILabel!
+    private var contentLabel: UILabel!
 
     //MARK: - Initialize
     convenience init(title: String, content: String) {
@@ -40,14 +40,14 @@ class TicketInfoContentStackView: UIStackView {
 
 extension TicketInfoContentStackView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         self.axis = .horizontal
         self.distribution = .equalCentering
         self.spacing = 30
     }
     
     //MARK: - Add View
-    func addTitleLabel() {
+    private func addTitleLabel() {
         titleLabel = UILabel()
         titleLabel.text = title
         titleLabel.font = .systemFont(ofSize: 13, weight: .bold)
@@ -57,7 +57,7 @@ extension TicketInfoContentStackView {
         self.addArrangedSubview(titleLabel)
     }
 
-    func addContentLabel() {
+    private func addContentLabel() {
         contentLabel = UILabel()
         contentLabel.text = content
         contentLabel.font = .systemFont(ofSize: 13, weight: .regular)

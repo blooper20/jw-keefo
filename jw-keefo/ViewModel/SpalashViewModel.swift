@@ -15,8 +15,9 @@ class SplashViewModel {
 }
 
 extension SplashViewModel {
-    /// SDK 연동이 잘 되었는지 확인하는 함수
+    
     func loginSDK(completion: @escaping((Bool) -> Void)) {
+        /// SDK 연동이 잘 되었는지 확인하는 함수
         LabCodeSDK.LoginManager.shared.labcode(
             apiKey: "0483e5fc-19e1-4669-a994-d3c5d9255dff",
             apiSecret: "18a300f8-e201-42f3-accd-a491838d1cad",
@@ -30,8 +31,8 @@ extension SplashViewModel {
         )
     }
     
-    /// 유저를 성공적으로 받아오는지 검증하는 함수
     func userCheck() {
+        /// 유저를 성공적으로 받아오는지 검증하는 함수
         Task {
             userResponse = await network.getUserData()
             guard let userResponse = userResponse else { return }
@@ -39,6 +40,7 @@ extension SplashViewModel {
                 print("<User> Verification",userResponse.message)
             } else {
                 print("user 생성")
+                //            newsResponse.statusCode에 따른 예외처리 예를 들면 else if newsResponse = newsResponse.statusCode == 404 { }
             }
         }
     }
@@ -51,6 +53,7 @@ extension SplashViewModel {
             return newsResponse.data
         } else {
             print("<Data> Load Failed")
+            //            newsResponse.statusCode에 따른 예외처리 예를 들면 else if newsResponse = newsResponse.statusCode == 404 { }
             return []
         }
     }

@@ -56,7 +56,7 @@ class CameraButtonView: UIView {
 }
 extension CameraButtonView {
     //MARK: - Configure
-    func configure() {
+    private func configure() {
         button.setImage(UIImage(named: buttonImageName), for: .normal)
         
         self.addSubview(button)

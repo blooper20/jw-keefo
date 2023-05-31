@@ -19,10 +19,10 @@ class HomeView: UIView {
     
 //MARK: - UI Component
     
-    lazy var topLogoView: TopLogoView = .init()
-    lazy var topImageBannerView: TopImageBannerView = .init()
-    var bottomEventBannerView: BottomEventBannerView
-    lazy var homeScrollView: UIScrollView = {
+    private lazy var topLogoView: TopLogoView = .init()
+    private lazy var topImageBannerView: TopImageBannerView = .init()
+    private var bottomEventBannerView: BottomEventBannerView
+    private lazy var homeScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isScrollEnabled = true
         scrollView.showsVerticalScrollIndicator = false
@@ -52,7 +52,7 @@ class HomeView: UIView {
 
 extension HomeView {
     //MARK: - Constraints
-    func configure() {
+    private func configure() {
         bottomEventBannerView = BottomEventBannerView.init(datum: datum)
         backgroundColor = .white
         

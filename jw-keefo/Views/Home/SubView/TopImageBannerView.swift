@@ -108,7 +108,7 @@ class TopImageBannerView: UIView {
 
 extension TopImageBannerView {
     //MARK: - Constraints
-    func configure() {
+    private func configure() {
         self.addSubview(bannerImageView)
         bannerImageView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
@@ -158,7 +158,7 @@ extension TopImageBannerView {
         }
     }
     
-    func addImageView() {
+    private func addImageView() {
         bannerImageView = UIImageView()
         DispatchQueue.main.async {
             let image = UIImage(named: "home_banner")
