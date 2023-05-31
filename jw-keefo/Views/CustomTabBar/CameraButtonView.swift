@@ -46,17 +46,31 @@ class CameraButtonView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
+    //MARK: - View Cycle
+    override func layoutSubviews() {
+            super.layoutSubviews()
+            setUpTabBarShadow()
+        }
+        
 }
 extension CameraButtonView {
     //MARK: - Configure
     func configure() {
-        
         button.setImage(UIImage(named: buttonImageName), for: .normal)
         
         self.addSubview(button)
         button.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    private func setUpTabBarShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 4
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: buttonCornerRadius).cgPath
     }
 }

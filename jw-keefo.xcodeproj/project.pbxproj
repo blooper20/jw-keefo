@@ -13,6 +13,7 @@
 		2F3FCCE42A1C403E00AEF9CE /* LabCodeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */; };
 		2F3FCCE52A1C403E00AEF9CE /* LabCodeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F3FCCE82A1C431900AEF9CE /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */; };
+		2F5086012A25872D007EFE3C /* ScanNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */; };
 		2F7FD4042A1C4E2C00F98817 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4032A1C4E2C00F98817 /* HomeViewModel.swift */; };
 		2F7FD4182A1C5FE700F98817 /* SpalashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */; };
 		2F7FD4262A1C7FB400F98817 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4252A1C7FB400F98817 /* Network.swift */; };
@@ -21,6 +22,9 @@
 		2F8812702A20487300EB5E3B /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88126F2A20487300EB5E3B /* ScanViewModel.swift */; };
 		2F8812722A205FBE00EB5E3B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8812712A205FBE00EB5E3B /* UIColor+.swift */; };
 		2F8812742A206E0E00EB5E3B /* ShortcutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8812732A206E0E00EB5E3B /* ShortcutButtonView.swift */; };
+		2F8B69372A25DE4F00462B64 /* ScanCheckNoticeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B69362A25DE4F00462B64 /* ScanCheckNoticeStackView.swift */; };
+		2F8B69392A25E43A00462B64 /* TicketInfoContentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B69382A25E43A00462B64 /* TicketInfoContentStackView.swift */; };
+		2F8B693F2A26E88C00462B64 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F8B693E2A26E88C00462B64 /* beep.mp3 */; };
 		2FBF248B2A14B4FF0080CFAD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF248A2A14B4FF0080CFAD /* HomeViewController.swift */; };
 		2FBF248D2A14B5100080CFAD /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF248C2A14B5100080CFAD /* ScanViewController.swift */; };
 		2FBF248F2A14B5310080CFAD /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF248E2A14B5310080CFAD /* CustomTabBarController.swift */; };
@@ -29,7 +33,6 @@
 		2FBF249A2A14B78F0080CFAD /* TopLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF24992A14B78F0080CFAD /* TopLogoView.swift */; };
 		2FBF249C2A14B8150080CFAD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF249B2A14B8150080CFAD /* HomeView.swift */; };
 		2FBF24A22A14C4AA0080CFAD /* CameraButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF24A12A14C4AA0080CFAD /* CameraButtonView.swift */; };
-		2FBF24A62A14C5250080CFAD /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF24A52A14C5250080CFAD /* ScanView.swift */; };
 		2FBF24AD2A14C7510080CFAD /* SuccesScanPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF24AC2A14C7510080CFAD /* SuccesScanPopupView.swift */; };
 		2FBF24AF2A14C7730080CFAD /* ScanTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF24AE2A14C7730080CFAD /* ScanTipView.swift */; };
 		2FBF24B32A14CE230080CFAD /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBF24B22A14CE230080CFAD /* PopupViewController.swift */; };
@@ -79,6 +82,7 @@
 		2F1917362A1B399200D5B777 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LabCodeSDK.xcframework; path = LabCodeSDK/SDK/LabCodeSDK.xcframework; sourceTree = "<group>"; };
 		2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
+		2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanNavigationBarView.swift; sourceTree = "<group>"; };
 		2F7FD4032A1C4E2C00F98817 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalashViewModel.swift; sourceTree = "<group>"; };
 		2F7FD4252A1C7FB400F98817 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -87,6 +91,9 @@
 		2F88126F2A20487300EB5E3B /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		2F8812712A205FBE00EB5E3B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2F8812732A206E0E00EB5E3B /* ShortcutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutButtonView.swift; sourceTree = "<group>"; };
+		2F8B69362A25DE4F00462B64 /* ScanCheckNoticeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCheckNoticeStackView.swift; sourceTree = "<group>"; };
+		2F8B69382A25E43A00462B64 /* TicketInfoContentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoContentStackView.swift; sourceTree = "<group>"; };
+		2F8B693E2A26E88C00462B64 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beep.mp3; path = ../../../../Desktop/beep.mp3; sourceTree = "<group>"; };
 		2FBF248A2A14B4FF0080CFAD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2FBF248C2A14B5100080CFAD /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		2FBF248E2A14B5310080CFAD /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -95,7 +102,6 @@
 		2FBF24992A14B78F0080CFAD /* TopLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLogoView.swift; sourceTree = "<group>"; };
 		2FBF249B2A14B8150080CFAD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2FBF24A12A14C4AA0080CFAD /* CameraButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButtonView.swift; sourceTree = "<group>"; };
-		2FBF24A52A14C5250080CFAD /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		2FBF24AC2A14C7510080CFAD /* SuccesScanPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccesScanPopupView.swift; sourceTree = "<group>"; };
 		2FBF24AE2A14C7730080CFAD /* ScanTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTipView.swift; sourceTree = "<group>"; };
 		2FBF24B22A14CE230080CFAD /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				2FC50FA12A14AD79007AC7A5 /* Assets.xcassets */,
+				2F8B693E2A26E88C00462B64 /* beep.mp3 */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -240,9 +247,7 @@
 		2FBF24912A14B54E0080CFAD /* Scan */ = {
 			isa = PBXGroup;
 			children = (
-				2FBF24AB2A14C6C40080CFAD /* Component */,
 				2FBF24B02A14C77C0080CFAD /* SubView */,
-				2FBF24A52A14C5250080CFAD /* ScanView.swift */,
 				2FBF24AC2A14C7510080CFAD /* SuccesScanPopupView.swift */,
 			);
 			path = Scan;
@@ -294,17 +299,13 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		2FBF24AB2A14C6C40080CFAD /* Component */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Component;
-			sourceTree = "<group>";
-		};
 		2FBF24B02A14C77C0080CFAD /* SubView */ = {
 			isa = PBXGroup;
 			children = (
 				2FBF24AE2A14C7730080CFAD /* ScanTipView.swift */,
+				2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */,
+				2F8B69362A25DE4F00462B64 /* ScanCheckNoticeStackView.swift */,
+				2F8B69382A25E43A00462B64 /* TicketInfoContentStackView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -470,6 +471,7 @@
 			files = (
 				2FC50FA52A14AD79007AC7A5 /* LaunchScreen.storyboard in Resources */,
 				2FC50FA22A14AD79007AC7A5 /* Assets.xcassets in Resources */,
+				2F8B693F2A26E88C00462B64 /* beep.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,9 +543,11 @@
 				2FBF24962A14B7450080CFAD /* TopImageBannerView.swift in Sources */,
 				2F7FD42A2A1C970700F98817 /* ScanResponse.swift in Sources */,
 				2FBF249A2A14B78F0080CFAD /* TopLogoView.swift in Sources */,
+				2F8B69392A25E43A00462B64 /* TicketInfoContentStackView.swift in Sources */,
 				2FBF24B62A14CF180080CFAD /* EntireEventCollectionViewCell.swift in Sources */,
 				2F7FD4182A1C5FE700F98817 /* SpalashViewModel.swift in Sources */,
 				2FBF24B32A14CE230080CFAD /* PopupViewController.swift in Sources */,
+				2F8B69372A25DE4F00462B64 /* ScanCheckNoticeStackView.swift in Sources */,
 				2FC50F9D2A14AD78007AC7A5 /* SplashViewController.swift in Sources */,
 				2FBF249C2A14B8150080CFAD /* HomeView.swift in Sources */,
 				2F7FD4282A1C96E700F98817 /* UserResponse.swift in Sources */,
@@ -553,10 +557,10 @@
 				2F8812742A206E0E00EB5E3B /* ShortcutButtonView.swift in Sources */,
 				2FBF248D2A14B5100080CFAD /* ScanViewController.swift in Sources */,
 				2F8812702A20487300EB5E3B /* ScanViewModel.swift in Sources */,
-				2FBF24A62A14C5250080CFAD /* ScanView.swift in Sources */,
 				2F8812722A205FBE00EB5E3B /* UIColor+.swift in Sources */,
 				2FBF24AF2A14C7730080CFAD /* ScanTipView.swift in Sources */,
 				2FC50F9B2A14AD78007AC7A5 /* SceneDelegate.swift in Sources */,
+				2F5086012A25872D007EFE3C /* ScanNavigationBarView.swift in Sources */,
 				2F1917322A1B204900D5B777 /* NewsTitleSectionView.swift in Sources */,
 				2F7FD4042A1C4E2C00F98817 /* HomeViewModel.swift in Sources */,
 				2FBF24A22A14C4AA0080CFAD /* CameraButtonView.swift in Sources */,
@@ -644,6 +648,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -658,7 +663,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -704,6 +709,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -712,9 +718,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -734,12 +741,13 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "jw-keefo/Application/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "스냅태그 SDK";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -768,12 +776,13 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "jw-keefo/Application/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "스냅태그 SDK";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

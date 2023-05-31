@@ -10,7 +10,7 @@ import SnapKit
 
 class EntireEventCollectionViewCell: UICollectionViewCell {
     
-//    private var datum: Datum
+    //    private var datum: Datum
     
     //MARK: - Default Value
     private lazy var eventImageRadius = 8.0
@@ -55,8 +55,8 @@ class EntireEventCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping // 단어 단위 줄 바꿈
         label.textAlignment = .left
-
-
+        
+        
         
         return label
     }()
@@ -104,13 +104,15 @@ extension EntireEventCollectionViewCell {
         eventTitleLabel.text = datum.name
         urlToImage(urlString: datum.bannerImage) { image in
             
-            if let image = image {
-                self.eventImageView.image = image
-            } else {
-                self.eventImageView.image = UIImage()
+            DispatchQueue.main.async {
+                if let image = image {
+                    self.eventImageView.image = image
+                } else {
+                    self.eventImageView.image = UIImage()
+                }
             }
         }
-
+        
         
         datum.eventTag.forEach { event in
             let tagView = TagView(tagContent: event.tag)
@@ -127,7 +129,7 @@ extension EntireEventCollectionViewCell {
         tagStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
+        
         self.addSubview(eventTitleLabel)
         eventTitleLabel.snp.remakeConstraints { make in
             make.top.equalTo(horizontalScrollView.snp.bottom).offset(eventTitleLabelTopOffset)
@@ -141,22 +143,22 @@ extension EntireEventCollectionViewCell {
             completion(nil)
             return
         }
-
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 completion(nil)
                 return
             }
-
+            
             if let data = data, let image = UIImage(data: data) {
                 completion(image)
             } else {
                 completion(nil)
             }
         }
-
+        
         task.resume()
     }
-
+    
 }

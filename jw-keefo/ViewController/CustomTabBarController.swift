@@ -33,12 +33,11 @@ class CustomTabBarController: UITabBarController {
     //MARK: - ViewCycle
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupTabBarShadow()
+        setUpTabBarShadow()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("CustomTabBarController ViewDidLoad")
         setTabBar()
         configure()
         addCameraButtonView()
@@ -67,7 +66,7 @@ extension CustomTabBarController {
         }
     }
     
-    private func setupTabBarShadow() {
+    private func setUpTabBarShadow() {
         tabBar.layer.shadowColor = UIColor.black.cgColor
         tabBar.layer.shadowOpacity = 0.4
         tabBar.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -75,7 +74,7 @@ extension CustomTabBarController {
         tabBar.layer.masksToBounds = false
         tabBar.layer.shadowPath = UIBezierPath(roundedRect: tabBar.bounds, cornerRadius: tabBarCornerRadius).cgPath
     }
-    
+        
     private func setTabBar() {
         
         let homeVC = HomeViewController(datum: datum)

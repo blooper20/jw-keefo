@@ -13,7 +13,7 @@ class ScanTipView: UIView {
     //MARK: - Default Value
     private let contentTitleWidth = 149
     private let scanTipTitle = "스캔 TIP"
-    private let contentTitleArray = [("", "수평을 맞춰서 스캔해주세요."),("", "어두울땐 플래시를 켜주세요.")]
+    private let contentTitleArray = [("tip1", "수평을 맞춰서 스캔해주세요."),("tip2", "어두울땐 플래시를 켜주세요.")]
     private let contentTitleFontSize = 14.0
     
     //MARK: - UI Component
@@ -21,7 +21,7 @@ class ScanTipView: UIView {
         let label = UILabel()
         label.textColor = .white
         label.text = scanTipTitle
-        label.font = .systemFont(ofSize: 14.0, weight: .regular)
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
         
         return label
     }()
@@ -29,7 +29,6 @@ class ScanTipView: UIView {
     private lazy var verticalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
         
         return stackView
     }()
@@ -49,13 +48,14 @@ class ScanTipView: UIView {
 extension ScanTipView {
     //MARK: - Configure
     func configure() {
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 8
         self.layer.masksToBounds = true
         self.backgroundColor = .black.withAlphaComponent(0.8)
         self.addSubview(scanTipTitleLabel)
         scanTipTitleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(12)
+            make.height.equalTo(18)
         }
         
         self.addSubview(verticalStackView)
@@ -72,35 +72,32 @@ extension ScanTipView {
             lazy var horizontalStackView: UIStackView = {
                 let stackView = UIStackView()
                 stackView.axis = .horizontal
-                stackView.alignment = .fill //????? 맞나 이게
+                stackView.spacing = 8
                 
                 return stackView
             }()
-            
-            lazy var contentIcon: UIImageView = {
-                let imageView = UIImageView()
-                imageView.image = UIImage(named: image)
+            DispatchQueue.main.async {
+                lazy var contentIcon: UIImageView = {
+                    let imageView = UIImageView()
+                    imageView.image = UIImage(named: image)
+                    imageView.contentMode = .scaleAspectFit
+                    
+                    return imageView
+                }()
                 
-                return imageView
-            }()
-            horizontalStackView.addArrangedSubview(contentIcon)
-            contentIcon.snp.makeConstraints { make in
-                make.width.equalTo(23)
-                make.verticalEdges.equalToSuperview()
-            }
-            
-            lazy var tipContent: UILabel = {
-                let label = UILabel()
-                label.text = contentTitle
-                label.sizeToFit()
-                label.textColor = .white
-                label.font = .systemFont(ofSize: contentTitleFontSize, weight: .regular)
+                horizontalStackView.addArrangedSubview(contentIcon)
                 
-                return label
-            }()
-            horizontalStackView.addArrangedSubview(tipContent)
-            tipContent.snp.makeConstraints { make in
-                make.verticalEdges.equalToSuperview()
+                lazy var tipContent: UILabel = {
+                    let label = UILabel()
+                    label.text = contentTitle
+                    label.sizeToFit()
+                    label.textColor = UIColor(hexCode: "#767676")
+                    label.font = .systemFont(ofSize: self.contentTitleFontSize, weight: .regular)
+                    
+                    return label
+                }()
+                
+                horizontalStackView.addArrangedSubview(tipContent)
             }
             
             horizontalStackView.snp.makeConstraints { make in

@@ -28,13 +28,7 @@ class TopImageBannerView: UIView {
     private let keefoTextFirstLineTopOffset = 23
     
     //MARK: - UI Component
-    private lazy var bannerImageView: UIImageView = {
-        let imageView = UIImageView()
-        let image = UIImage(named: "home_banner")
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+    private var bannerImageView: UIImageView!
     
     private lazy var keefoFirstLabel: UILabel = {
         let label = UILabel()
@@ -43,6 +37,7 @@ class TopImageBannerView: UIView {
         label.textColor = UIColor(hexCode: "#5B6780")
         label.font = .systemFont(ofSize: keefoFirstLineFontSize, weight: .semibold)
         label.sizeToFit()
+        
         return label
     }()
     
@@ -53,6 +48,7 @@ class TopImageBannerView: UIView {
         label.textColor = .black
         label.font = .systemFont(ofSize: keefoSecondLineFontSize, weight: .semibold)
         label.sizeToFit()
+        
         return label
     }()
     
@@ -63,6 +59,7 @@ class TopImageBannerView: UIView {
         label.textColor = .black
         label.font = .systemFont(ofSize: keefoSecondLineFontSize, weight: .bold)
         label.sizeToFit()
+        
         return label
     }()
     
@@ -73,18 +70,21 @@ class TopImageBannerView: UIView {
         label.textColor = .black
         label.font = .systemFont(ofSize: keefoSecondLineFontSize, weight: .bold)
         label.sizeToFit()
+        
         return label
     }()
     
     private lazy var keefoTextFirstLine: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
+        
         return view
     }()
     
     private lazy var keefoTextSecondLine: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
+        
         return view
     }()
     
@@ -97,6 +97,7 @@ class TopImageBannerView: UIView {
     //MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addImageView()
         configure()
     }
     
@@ -154,6 +155,22 @@ extension TopImageBannerView {
             make.centerX.equalTo(self.snp.centerX)
             make.width.equalTo(buttonWidth) // 여기
             make.height.equalTo(buttonHeight)
+        }
+    }
+    
+    func addImageView() {
+        bannerImageView = UIImageView()
+        DispatchQueue.main.async {
+            let image = UIImage(named: "home_banner")
+            self.bannerImageView.image = image
+        }
+        bannerImageView.contentMode = .scaleAspectFill
+        
+        self.addSubview(bannerImageView)
+        
+        bannerImageView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalToSuperview()
         }
     }
 }

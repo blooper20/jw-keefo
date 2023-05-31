@@ -37,6 +37,5 @@ class HomeViewController: UIViewController {
         homeView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
     }
 }
