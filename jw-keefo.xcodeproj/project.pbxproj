@@ -14,6 +14,7 @@
 		2F3FCCE52A1C403E00AEF9CE /* LabCodeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2F3FCCE82A1C431900AEF9CE /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */; };
 		2F5086012A25872D007EFE3C /* ScanNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */; };
+		2F50F8B72A28215D00D3ED72 /* ScanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F50F8B62A28215D00D3ED72 /* ScanUseCase.swift */; };
 		2F7FD4182A1C5FE700F98817 /* SpalashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */; };
 		2F7FD4262A1C7FB400F98817 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4252A1C7FB400F98817 /* Network.swift */; };
 		2F7FD4282A1C96E700F98817 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7FD4272A1C96E700F98817 /* UserResponse.swift */; };
@@ -82,6 +83,7 @@
 		2F3FCCE32A1C403E00AEF9CE /* LabCodeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LabCodeSDK.xcframework; path = LabCodeSDK/SDK/LabCodeSDK.xcframework; sourceTree = "<group>"; };
 		2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		2F5086002A25872D007EFE3C /* ScanNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanNavigationBarView.swift; sourceTree = "<group>"; };
+		2F50F8B62A28215D00D3ED72 /* ScanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanUseCase.swift; sourceTree = "<group>"; };
 		2F7FD4172A1C5FE700F98817 /* SpalashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalashViewModel.swift; sourceTree = "<group>"; };
 		2F7FD4252A1C7FB400F98817 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2F7FD4272A1C96E700F98817 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -148,7 +150,6 @@
 		2F1917332A1B395500D5B777 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				2F7FD4242A1C7F8F00F98817 /* Network */,
 				2F1917342A1B396800D5B777 /* Extensions */,
 			);
 			path = Util;
@@ -163,6 +164,41 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2F50F8B22A28200A00D3ED72 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2FBF24862A14B4660080CFAD /* ViewModel */,
+				2FBF24852A14B4560080CFAD /* Views */,
+				2FBF24872A14B4730080CFAD /* ViewController */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		2F50F8B32A28203E00D3ED72 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2F7FD4242A1C7F8F00F98817 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2F50F8B42A2820D500D3ED72 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2F1917332A1B395500D5B777 /* Util */,
+				2FC50FA62A14AD79007AC7A5 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		2F50F8B52A28211800D3ED72 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				2F50F8B62A28215D00D3ED72 /* ScanUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		2F7FD4242A1C7F8F00F98817 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +210,7 @@
 		2FBF24842A14B41A0080CFAD /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				2FC50FA62A14AD79007AC7A5 /* Info.plist */,
+				2F50F8B42A2820D500D3ED72 /* Config */,
 				2FC50FA32A14AD79007AC7A5 /* LaunchScreen.storyboard */,
 				2FC50F982A14AD78007AC7A5 /* AppDelegate.swift */,
 				2FC50F9A2A14AD78007AC7A5 /* SceneDelegate.swift */,
@@ -216,18 +252,19 @@
 		2FBF24882A14B4890080CFAD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				2FBF24932A14B5960080CFAD /* Entity */,
+				2FBF24932A14B5960080CFAD /* Responses */,
+				2F50F8B52A28211800D3ED72 /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		2FBF24892A14B4A40080CFAD /* Resource */ = {
+		2FBF24892A14B4A40080CFAD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				2FC50FA12A14AD79007AC7A5 /* Assets.xcassets */,
 				2F8B693E2A26E88C00462B64 /* beep.mp3 */,
 			);
-			path = Resource;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2FBF24902A14B53D0080CFAD /* Home */ = {
@@ -257,14 +294,14 @@
 			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
-		2FBF24932A14B5960080CFAD /* Entity */ = {
+		2FBF24932A14B5960080CFAD /* Responses */ = {
 			isa = PBXGroup;
 			children = (
 				2F3FCCE72A1C431900AEF9CE /* NewsResponse.swift */,
 				2F7FD4272A1C96E700F98817 /* UserResponse.swift */,
 				2F7FD4292A1C970700F98817 /* ScanResponse.swift */,
 			);
-			path = Entity;
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		2FBF249D2A14BC2E0080CFAD /* SubView */ = {
@@ -322,13 +359,11 @@
 		2FC50F972A14AD78007AC7A5 /* jw-keefo */ = {
 			isa = PBXGroup;
 			children = (
-				2FBF24892A14B4A40080CFAD /* Resource */,
-				2F1917332A1B395500D5B777 /* Util */,
 				2FBF24842A14B41A0080CFAD /* Application */,
+				2F50F8B32A28203E00D3ED72 /* Data */,
 				2FBF24882A14B4890080CFAD /* Domain */,
-				2FBF24862A14B4660080CFAD /* ViewModel */,
-				2FBF24852A14B4560080CFAD /* Views */,
-				2FBF24872A14B4730080CFAD /* ViewController */,
+				2F50F8B22A28200A00D3ED72 /* Presentation */,
+				2FBF24892A14B4A40080CFAD /* Resources */,
 			);
 			path = "jw-keefo";
 			sourceTree = "<group>";
@@ -549,6 +584,7 @@
 				2F8812722A205FBE00EB5E3B /* UIColor+.swift in Sources */,
 				2FBF24AF2A14C7730080CFAD /* ScanTipView.swift in Sources */,
 				2FC50F9B2A14AD78007AC7A5 /* SceneDelegate.swift in Sources */,
+				2F50F8B72A28215D00D3ED72 /* ScanUseCase.swift in Sources */,
 				2F5086012A25872D007EFE3C /* ScanNavigationBarView.swift in Sources */,
 				2F1917322A1B204900D5B777 /* NewsTitleSectionView.swift in Sources */,
 				2FBF24A22A14C4AA0080CFAD /* CameraButtonView.swift in Sources */,
@@ -728,7 +764,7 @@
 				DEVELOPMENT_TEAM = TPMZHNL62V;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "jw-keefo/Application/Info.plist";
+				INFOPLIST_FILE = "jw-keefo/Application/Config/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "스냅태그 SDK";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -763,7 +799,7 @@
 				DEVELOPMENT_TEAM = TPMZHNL62V;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "jw-keefo/Application/Info.plist";
+				INFOPLIST_FILE = "jw-keefo/Application/Config/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "스냅태그 SDK";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

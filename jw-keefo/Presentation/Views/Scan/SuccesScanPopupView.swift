@@ -50,6 +50,7 @@ extension SuccesScanPopUpView {
         self.layer.masksToBounds = true
     }
     
+    //MARK: - Add View
     private func addContentView() {
         contentView = UIView()
         contentView.backgroundColor = .clear
@@ -89,7 +90,8 @@ extension SuccesScanPopUpView {
     }
     
     private func addTicketInfoContentStackView() {
-        let date = scanResponse.data?.info?.advanceReservation?.advanceReservationEventDate?[0].eventDate?.date
+        let eventDate = scanResponse.data?.info?.advanceReservation?.advanceReservationEventDate?[0].eventDate?.date
+        let date = dateFormat(date: eventDate)
         let session = scanResponse.data?.info?.advanceReservation?.advanceReservationEventDate?[0].advanceReservationEventSession?[0].eventSession?.name
         guard let quantity = scanResponse.data?.info?.advanceReservation?.ticketQuantity else { return }
         let ticketType = scanResponse.data?.info?.advanceReservation?.ticketType
@@ -111,7 +113,6 @@ extension SuccesScanPopUpView {
         }
     }
     
-    
     private func addConfirmButton() {
         confirmButton = UIButton()
         confirmButton.setTitle("확인", for: .normal)
@@ -128,5 +129,25 @@ extension SuccesScanPopUpView {
             make.bottom.horizontalEdges.equalToSuperview()
             make.height.equalTo(50)
         }
+    }
+}
+
+extension SuccesScanPopUpView {
+    //MARK: - Function
+    private func dateFormat(date: String?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let useDateFormatter = DateFormatter()
+        useDateFormatter.dateFormat = "MM/dd"
+        guard let date = date else {
+            fatalError("EventDate를 받아오지 못했습니다.")
+        }
+        guard let convertDate = dateFormatter.date(from: date) else {
+            fatalError("EventDate Data 변환 오류")
+        }
+        
+        let convertStr = useDateFormatter.string(from: convertDate)
+        
+        return convertStr
     }
 }
