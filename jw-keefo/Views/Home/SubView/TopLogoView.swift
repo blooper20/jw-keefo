@@ -15,6 +15,7 @@ class TopLogoView: UIView {
     //MARK: - Initailize
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         configure()
         addLogoImageView()
     }

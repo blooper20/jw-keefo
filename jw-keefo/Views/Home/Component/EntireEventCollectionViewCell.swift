@@ -90,9 +90,11 @@ extension EntireEventCollectionViewCell {
     
     //MARK: - Function
     func binding(datum: Datum) {
-        eventTitleLabel.text = datum.name
-        urlToImage(urlString: datum.bannerImage) { image in
-            
+        guard let name = datum.name else { return }
+        guard let bannerImage = datum.bannerImage else { return }
+        
+        eventTitleLabel.text = name
+        urlToImage(urlString: bannerImage) { image in
             DispatchQueue.main.async {
                 if let image = image {
                     self.eventImageView.image = image
@@ -103,8 +105,9 @@ extension EntireEventCollectionViewCell {
             }
         }
         
-        datum.eventTag.forEach { event in
-            let tagView = TagView(tagContent: event.tag)
+        datum.eventTag?.forEach { event in
+            guard let tag = event.tag else { return }
+            let tagView = TagView(tagContent: tag)
             
             tagStackView.addArrangedSubview(tagView)
             

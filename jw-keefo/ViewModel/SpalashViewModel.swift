@@ -10,8 +10,8 @@ import LabCodeSDK
 
 class SplashViewModel {
     let network: Network = Network()
-    var userResponse: UserResponse?
-    private var newsResponse: NewsResponse?
+    var userResponse: UserResponse!
+    private var newsResponse: NewsResponse!
 }
 
 extension SplashViewModel {
@@ -37,7 +37,8 @@ extension SplashViewModel {
             userResponse = await network.getUserData()
             guard let userResponse = userResponse else { return }
             if userResponse.statusCode == 200 {
-                print("<User> Verification",userResponse.message)
+                guard let message = userResponse.message else { return }
+                print("<User> Verification",message)
             } else {
                 print("user 생성")
                 //            newsResponse.statusCode에 따른 예외처리 예를 들면 else if newsResponse = newsResponse.statusCode == 404 { }
@@ -47,10 +48,13 @@ extension SplashViewModel {
     
     func getNewsData() async throws -> [Datum] {
         newsResponse = await network.getNewsData()
-        guard let newsResponse = newsResponse else { return [] }
+        guard let newsResponse = newsResponse else {
+            fatalError("newsResponse를 받아오지 못했습니다.")
+        }
         if newsResponse.statusCode == 200 {
             print("<Data> Load Success")
-            return newsResponse.data
+            let data = newsResponse.data.compactMap { $0 }
+            return data
         } else {
             print("<Data> Load Failed")
             //            newsResponse.statusCode에 따른 예외처리 예를 들면 else if newsResponse = newsResponse.statusCode == 404 { }

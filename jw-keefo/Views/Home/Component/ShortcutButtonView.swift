@@ -18,9 +18,11 @@ class ShortcutButtonView: UIView {
     //MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         configure()
         addButtonStackView()
         addTitleLabel()
+        addButtonIcon()
         addTapGesture()
     }
     

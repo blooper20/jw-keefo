@@ -8,6 +8,13 @@
 import Foundation
 
 // MARK: - UserResponse
+struct UserResponse: Decodable {
+    let statusCode: Int?
+    let message: String?
+}
+
+//MARK: - 나중에 쓸지도 모를 것
+/*
 struct UserResponse: Codable {
     let statusCode: Int
     let message: String
@@ -57,4 +64,4 @@ class JSONNull: Codable, Hashable {
         try container.encodeNil()
     }
 }
-
+*/

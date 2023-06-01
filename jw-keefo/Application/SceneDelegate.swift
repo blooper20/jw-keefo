@@ -18,8 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewModel = SplashViewModel()
         let mainViewController = SplashViewController(viewModel: viewModel) // 맨 처음 보여줄 ViewController
         
-//        let viewModel = HomeViewModel()
-//        let mainViewController = HomeViewController(viewModel: viewModel)
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
         guard let _ = (scene as? UIWindowScene) else { return }

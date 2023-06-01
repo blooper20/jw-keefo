@@ -26,6 +26,7 @@ class CustomTabBarController: UITabBarController {
     //MARK: - ViewCycle
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         setUpTabBarShadow()
     }
     

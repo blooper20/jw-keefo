@@ -17,7 +17,7 @@ extension ScanViewModel {
         scanResponse = await network.getScanData()
         guard let response = scanResponse else {
             // ScanResponse를 못 받아왔을 때의 로직 구현
-            fatalError("ScanResponse를 못 받아 왔습니다.")
+            fatalError("ScanResponse를 받아오지 못했습니다.")
         }
         return response
     }

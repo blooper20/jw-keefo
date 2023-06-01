@@ -45,6 +45,7 @@ class ScanViewController: DetectViewController {
         self.delegate = self
         self.activateLabTracking(uniqueValue: "스냅태그")
         
+        configure()
         addScanNavigationBarView()
         addHorizontalStackView()
         addTorchButton()
@@ -54,7 +55,6 @@ class ScanViewController: DetectViewController {
         addScanFrameDot()
         addScanTipView()
         addTapTarget()
-        configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +71,8 @@ extension ScanViewController {
     private func configure() {
         self.setSoundStatus(value: true)
         self.setVibrationStatus(value: true)
+        
+        self.playSoundEvenIfMuted()
     }
     
     //MARK: - Add View
@@ -247,7 +249,9 @@ extension ScanViewController {
             let popupViewController = PopupViewController(snapShotView: snapShotView!, scanResponse: self.scanResponse)
             popupViewController.modalPresentationStyle = .fullScreen
             popupViewController.modalTransitionStyle = .crossDissolve
+            
             self.present(popupViewController, animated: true)
+            
             popupViewController.succesScanPopUpView.confirmButton.addTarget(self, action: #selector(self.confirmTap), for: .touchUpInside)
         }
     }

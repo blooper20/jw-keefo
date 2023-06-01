@@ -8,14 +8,34 @@
 import Foundation
 
 // MARK: - HomeResponses
-struct NewsResponse: Codable {
+struct NewsResponse: Decodable {
+    let statusCode: Int?
+    let data: [Datum?]
+}
+
+// MARK: - Datum
+struct Datum: Decodable {
+    let name: String?
+    let bannerImage: String?
+    let eventTag: [EventTag]?
+}
+
+// MARK: - EventTag
+struct EventTag: Decodable {
+    let tag: String?
+}
+
+//MARK: - 나중에 쓸지도 모를 것
+/*
+// MARK: - HomeResponses
+struct NewsResponse: Decodable {
     let statusCode: Int
     let message: String
     let data: [Datum]
 }
 
 // MARK: - Datum
-struct Datum: Codable {
+struct Datum: Decodable {
     let id: Int
     let created: String
     let status: Bool
@@ -36,7 +56,7 @@ struct Datum: Codable {
 }
 
 // MARK: - EventHomeMaster
-struct EventHomeMaster: Codable {
+struct EventHomeMaster: Decodable {
     let id: Int
     let created: String
     let status: Bool
@@ -51,7 +71,7 @@ struct EventHomeMaster: Codable {
     }
 }
 
-// MARK: - HomeMaster
+ MARK: - HomeMaster
 struct HomeMaster: Codable {
     let id: Int
     let created: String
@@ -69,7 +89,7 @@ struct HomeMaster: Codable {
 }
 
 // MARK: - EventTag
-struct EventTag: Codable {
+struct EventTag: Decodable {
     let id: Int
     let tag: String
     let eventID: Int
@@ -79,5 +99,4 @@ struct EventTag: Codable {
         case eventID = "eventId"
     }
 }
-
-
+*/
