@@ -176,29 +176,6 @@ extension ScanViewController {
             make.height.equalToSuperview().multipliedBy(0.2)
         }
     }
-
-    //MARK: - Selector
-    @objc func goOutside(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func tapTorchButton(_ sender: UIButton) {
-        let currentTorchStatus: Bool = self.getCurrentTorchStatus()
-        self.controlTorch(on: !currentTorchStatus)
-        self.setTorchButton(value: !currentTorchStatus)
-    }
-    
-    @objc func tapZoomButton(_ sender: UIButton) {
-        let zoomStatus: Bool = (self.getCurrentZoomLevel() == .HIGH) ? true : false
-        let zoomLevel: ZoomLevel = (zoomStatus) ? .NORMAL : .HIGH
-        self.controlZoom(level: zoomLevel)
-        self.setZoomButton(value: !zoomStatus)
-    }
-    
-    @objc func confirmTap(sender: UITapGestureRecognizer) {
-        self.dismiss(animated: true)
-        self.startSession()
-    }
 }
 
 //MARK: - Delegate
@@ -264,5 +241,26 @@ extension ScanViewController {
         }
     }
     
+    //MARK: - Selector
+    @objc func goOutside(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
+    @objc func tapTorchButton(_ sender: UIButton) {
+        let currentTorchStatus: Bool = self.getCurrentTorchStatus()
+        self.controlTorch(on: !currentTorchStatus)
+        self.setTorchButton(value: !currentTorchStatus)
+    }
+    
+    @objc func tapZoomButton(_ sender: UIButton) {
+        let zoomStatus: Bool = (self.getCurrentZoomLevel() == .HIGH) ? true : false
+        let zoomLevel: ZoomLevel = (zoomStatus) ? .NORMAL : .HIGH
+        self.controlZoom(level: zoomLevel)
+        self.setZoomButton(value: !zoomStatus)
+    }
+    
+    @objc func confirmTap(sender: UITapGestureRecognizer) {
+        self.dismiss(animated: false)
+        self.startSession()
+    }
 }
